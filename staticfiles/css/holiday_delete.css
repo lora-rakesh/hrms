@@ -1,26 +1,18 @@
-<<<<<<< HEAD
-.card {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
-  margin: 20px auto;
-  background-color: #fff;
-=======
 :root {
-  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
-  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
-  --primary-color: #6366f1;
-  --hover-color: #4f46e5;
+  --primary-gradient: linear-gradient(135deg, #7b2ff7, #00c2ff);
+  --primary-hover: linear-gradient(135deg, #5b21b6, #0891b2);
+  --primary-color: #7b2ff7;
+  --hover-color: #5b21b6;
   --text-color: #1f2937;
-  --danger-color: #dc2626;
-  --danger-hover: #b91c1c;
-  --secondary-color: #6b7280;
-  --secondary-hover: #4b5563;
+  --danger-color: #ef4444;
+  --danger-hover: #dc2626;
+  --secondary-color: #64748b;
+  --secondary-hover: #475569;
   --card-bg: #ffffff;
-  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
+/* Card Styling */
 .card {
   background: var(--card-bg);
   border: none;
@@ -28,70 +20,47 @@
   box-shadow: var(--card-shadow);
   max-width: 500px;
   margin: 20px auto;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
-<<<<<<< HEAD
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-}
-
-.card-body {
-  padding: 24px;
-=======
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
 }
 
 .card-body {
   padding: 1.5rem;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 .card-title {
   font-size: 1.5rem;
-<<<<<<< HEAD
-  margin-bottom: 20px;
-  color: #1a1a1a;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-
-.btn {
-  padding: 10px 18px;
-=======
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 1rem;
   color: var(--text-color);
   background: var(--primary-gradient);
   -webkit-text-fill-color: transparent;
 }
 
+/* Button Base */
 .btn {
   padding: 0.5rem 1.25rem;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
   border-radius: 6px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   border: none;
-<<<<<<< HEAD
-  margin-right: 10px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  font-family: 'Poppins', sans-serif;
-=======
   transition: all 0.3s ease;
   font-size: 0.875rem;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
-/* Gradient Blue (Primary) Button */
+/* Primary Gradient Button */
 .btn-primary {
-  background: linear-gradient(135deg, rgb(60, 160, 255), rgb(25, 118, 210));
+  background: var(--primary-gradient);
   color: white;
+  box-shadow: 0 4px 12px rgba(123, 47, 247, 0.3);
 }
 
 .btn-primary:hover {
-  background: rgb(7, 30, 161);
+  background: var(--primary-hover);
   transform: scale(1.03);
 }
 
@@ -102,12 +71,7 @@
 }
 
 .btn-danger:hover {
-<<<<<<< HEAD
-  background-color: #c82333;
-  transform: scale(1.03);
-=======
   background-color: var(--danger-hover);
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 /* Secondary / Cancel Button */
@@ -118,10 +82,5 @@
 }
 
 .btn-secondary:hover {
-<<<<<<< HEAD
-  background-color: #5a6268;
-  transform: scale(1.03);
-=======
   background-color: var(--secondary-hover);
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }

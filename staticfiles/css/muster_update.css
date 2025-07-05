@@ -8,12 +8,14 @@
     --bg-white: #ffffff;
     --border-color: #ddd;
 
-    /* Extra gradients for table columns */
+    /* Custom gradients for table headers */
     --col1: linear-gradient(135deg, #a78bfa, #7dd3fc);
     --col2: linear-gradient(135deg, #f472b6, #fb923c);
     --col3: linear-gradient(135deg, #34d399, #60a5fa);
     --col4: linear-gradient(135deg, #fcd34d, #f472b6);
     --col5: linear-gradient(135deg, #06b6d4, #4f46e5);
+    --col6: linear-gradient(135deg, #84cc16, #22d3ee);
+    --col7: var(--primary-gradient); /* Status column */
 }
 
 /* Reset */
@@ -27,7 +29,6 @@ body {
     color: var(--text-color);
 }
 
-/* Container */
 .container {
     width: 100%;
     background-color: var(--bg-white);
@@ -36,7 +37,6 @@ body {
     border-radius: 10px;
 }
 
-/* Headings */
 h1, .table h1 {
     text-align: center;
     color: var(--primary-color);
@@ -45,7 +45,6 @@ h1, .table h1 {
     margin-bottom: 30px;
 }
 
-/* Employee Details */
 p {
     font-size: 1.1rem;
     margin: 10px 0;
@@ -94,7 +93,6 @@ textarea {
     resize: vertical;
 }
 
-/* Buttons */
 button {
     margin-top: 20px;
     padding: 12px;
@@ -111,7 +109,6 @@ button:hover {
     background: var(--primary-hover);
 }
 
-/* Back Link */
 .back-link {
     display: inline-block;
     text-align: center;
@@ -136,28 +133,16 @@ table {
     overflow: hidden;
 }
 
-/* Table Header with Gradient per Column */
-table thead tr th:nth-child(1) {
-    background: var(--col1);
-}
+/* Header Gradient Colors for 7 Columns */
+table thead tr th:nth-child(1) { background: var(--col1); }
+table thead tr th:nth-child(2) { background: var(--col2); }
+table thead tr th:nth-child(3) { background: var(--col3); }
+table thead tr th:nth-child(4) { background: var(--col4); }
+table thead tr th:nth-child(5) { background: var(--col5); }
+table thead tr th:nth-child(6) { background: var(--col6); }
+table thead tr th:nth-child(7) { background: var(--col7); }
 
-table thead tr th:nth-child(2) {
-    background: var(--col2);
-}
-
-table thead tr th:nth-child(3) {
-    background: var(--col3);
-}
-
-table thead tr th:nth-child(4) {
-    background: var(--col4);
-}
-
-table thead tr th:nth-child(5) {
-    background: var(--col5);
-}
-
-/* Add more nth-child if you have more columns */
+/* Common Header Style */
 table thead th {
     color: white;
     text-transform: uppercase;
@@ -168,8 +153,7 @@ table thead th {
 }
 
 /* Body and Cell Styles */
-table th,
-table td {
+table th, table td {
     border: 1px solid var(--border-color);
     font-size: 0.95rem;
     padding: 15px;
@@ -183,8 +167,7 @@ table tbody tr:hover {
     background-color: #f1f5f9;
 }
 
-/* Last Column Styling */
-table th:last-child,
+/* Last Column (Status) Styling */
 table td:last-child {
     background: var(--primary-gradient);
     color: #ffffff;
@@ -193,6 +176,7 @@ table td:last-child {
     white-space: nowrap;
 }
 
+/* Keep Last Column Gradient on Hover */
 table tbody tr:hover td:last-child {
     background: var(--primary-hover);
     color: #ffffff;
@@ -270,3 +254,4 @@ table tbody tr:hover td:last-child {
         margin: 20px auto 0;
     }
 }
+
