@@ -23,7 +23,7 @@
 <div class="profile-container">
 
     <div class="cover-photo">
-        <img src="{% if employee.cover_picture %}{{ employee.cover_picture.url }}{% else %}https://www.lorainnovations.com/assets/img/Lora.jpg{% endif %}" alt="Cover Picture" class="cover-icon">
+        <img src="{% if employee.profile_picture %}{{ employee.profile_picture.url }}{% else %}{% static 'images/profile_pic.png' %}{% endif %}" alt="Profile Picture" class="profile-icon">
         <div class="edit-cover-icon">
             <i class="fa-solid fa-camera"></i>
         </div>
@@ -239,7 +239,7 @@
 </script>
 
 <!---- Upload photos -->
-<!-- <script>
+<script>
     // Open the modal when clicking the "Plus Icon" for Profile Picture
     document.querySelector('.edit-profile-icon').addEventListener('click', function () {
         document.getElementById('uploadModal').style.display = 'block';
@@ -315,7 +315,7 @@
 
 </script> -->
 
-<!-- <script>
+<script>
     // Elements
     const profilePic = document.getElementById("profilePic");
     const modal = document.getElementById("uploadModal");
