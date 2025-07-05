@@ -1,77 +1,114 @@
-
-.table-responsive {
-    width: 100%;
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch; 
-    border: 1px solid #ddd; 
-    background: #fff;
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  --primary-color: #1e293b;
+  --text-color: #4b5563;
+  --background: #f8fafc;
+  --table-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --button-bg: #6366f1;
+  --button-hover: #4f46e5;
 }
 
+/* Table Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--table-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Table */
 .table {
-    width: 100%;
-    min-width: 700px;
-    border-collapse: collapse;
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background-color: var(--table-bg);
 }
 
 .table thead {
-    background-color: #f1f1f1;
+  background: var(--primary-gradient);
+  color: white;
 }
 
-.table th, .table td {
-    white-space: nowrap;
-    text-align: center;
-    padding: 8px;
-    border: 1px solid #ddd;
+.table th,
+.table td {
+  white-space: nowrap;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+  font-size: 0.875rem;
 }
 
 .btn {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--primary-gradient);
+  color: white;
+  transition: 0.3s ease;
 }
-.ruby{
-    display:ruby;
-}
-.buton{
-        width:10vw;
-        height:5vh
-    }
 
+.btn:hover {
+  background: var(--primary-hover);
+}
+
+.btns {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.btns:hover {
+  background: var(--primary-hover);
+  border-color: transparent;
+}
+
+.ruby {
+  display: ruby;
+}
+
+.buton {
+  width: 10vw;
+  height: 5vh;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
-    .table-responsive {
-        overflow-x: auto;
-        display: block;
-        width: 100%;
-    }
+  .table-responsive {
+    display: block;
+    width: 100%;
+  }
 
-    .table {
-        min-width: 800px; 
-    }
+  .table {
+    min-width: 800px;
+  }
 }
-
 
 @media (max-width: 480px) {
-    .table {
-        min-width: 900px;
-    }
+  .table {
+    min-width: 900px;
+  }
 
-    .btn {
-        padding: 0.2rem 0.4rem;
-        font-size: 0.7rem;
-    }
-    
-    .ruby{
-        display:inline;
-    }
-    .buton{
-        width:25vw;
-        height:4vh
-    }
-}
-.btns{
-    background-color:#95c936;
-    border-color:#95c936;
-}
-.btns:hover{
-    background-color:rgb(125, 179, 25);
-    border-color: #95c936;
+  .btn {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .ruby {
+    display: inline;
+  }
+
+  .buton {
+    width: 25vw;
+    height: 4vh;
+  }
 }
