@@ -1,170 +1,153 @@
-    .table-container {
-        margin-bottom: 2rem;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  --primary-color: #1e293b;
+  --text-color: #4b5563;
+  --background: #f8fafc;
+  --card-bg: #ffffff;
+  --header-bg: #f1f5f9;
+  --border-color: #e2e8f0;
+}
 
-    .table-responsive {
-        width: 100%;
-        margin-bottom: 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
+/* Table Container */
+.table-container {
+  margin-bottom: 2rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
 
-    .table {
-        width: 100%;
-        margin-bottom: 0;
-        border-collapse: collapse;
-        white-space: nowrap;
-    }
+/* Table */
+.table-responsive {
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
-    .table th,
-    .table td {
-        padding: 1rem;
-        vertical-align: middle;
-        border: 1px solid #dee2e6;
-    }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  white-space: nowrap;
+  background: var(--card-bg);
+}
 
-    .table th {
-        position: sticky;
-        top: 0;
-        background-color: #f8f9fa;
-        font-weight: 600;
-        text-align: left;
-       
-    }
+.table th,
+.table td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  border: 1px solid var(--border-color);
+  min-width: 100px;
+  color: var(--primary-color);
+}
 
-    /* Section headers */
-    .section-header {
-        padding: 1rem;
-        margin: 2rem 0 1rem;
-        border-bottom: 2px solid #dee2e6;
-    }
+.table th {
+  position: sticky;
+  top: 0;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  z-index: 1;
+}
 
-    /* Filter form styles */
-    .filter-form {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin-bottom: 2rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+/* Section Header */
+.section-header {
+  padding: 1rem;
+  margin: 2rem 0 1rem;
+  border-bottom: 2px solid var(--border-color);
+  background: var(--card-bg);
+  color: black; /* Changed from gradient to plain black */
+  font-weight: 600;
+  font-size: 1.2rem;
+}
 
-    /* Responsive breakpoints */
-    @media (max-width: 768px) {
-        .table th,
-        .table td {
-            padding: 0.75rem;
-            font-size: 0.875rem;
-        }
+/* Filter Form */
+.filter-form {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
 
-        .filter-form {
-            padding: 1rem;
-        }
-    }
+/* Button Gradient */
+.bb {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  font-size: 0.875rem;  /* Reduced vertical padding */
+  border-radius: 6px;
+  transition: 0.3s ease;
+  line-height: 1; /* Optional: helps tighten the vertical height */
+}
 
-    /* Container max-width control */
-    .container {
-        max-width: 100%;
-        padding: 0 1rem;
-    }
 
-    /* Location icon alignment */
-    .location-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    /* Status indicators */
-    .status-cell {
-        white-space: nowrap;
-        padding: 0.25rem 0.75rem;
-        border-radius: 4px;
-        display: inline-block;
-    }
- 
-    .table-responsive {
-        margin-bottom: 1rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        position: relative;
-        width: 100%;
-    }
+.bb:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
 
-    .table {
-        width: 100%;
-        margin-bottom: 1rem;
-        border-collapse: collapse;
-        table-layout: auto; /* Ensures the table adjusts to content */
-    }
+/* Icon Alignment */
+.location-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .table th,
-    .table td {
-        padding: 0.75rem;
-        white-space: nowrap;
-        min-width: 100px;
-    }
+/* Status Label */
+.status-cell {
+  white-space: nowrap;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  display: inline-block;
+  background: var(--primary-gradient);
+  color: white;
+  font-size: 0.75rem;
+}
 
-    .table th {
-        position: sticky;
-        top: 0;
-        background-color: #f8f9fa;
-    }
+/* Container */
+.container {
+  max-width: 100%;
+  padding: 0 1rem;
+}
 
-    /* Ensure the table does not overflow the screen */
-    @media (max-width: 768px) {
-        .table-responsive {
-            width: 100%;
-            overflow-x: scroll;
-            -webkit-overflow-scrolling: touch;
-        }
+/* Overflow Handling */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
 
-        .table {
-            width: max-content; /* Allow the table to expand as needed */
-            font-size: 0.875rem;
-        }
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
 
-        .table th,
-        .table td {
-            padding: 0.5rem;
-            }
-        }
+  .filter-form {
+    padding: 1rem;
+  }
 
-        /* Prevent the page from overflowing */
-        html, body {
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            width: 100%;
-        }
+  .table {
+    width: max-content;
+    font-size: 0.875rem;
+  }
 
-        .container {
-            max-width: 100%; /* Ensure the container does not exceed the screen width */
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-        }
+  .buttoned {
+    padding: 24px;
+    margin-top: 10px;
+  }
+}
 
-        .buttoned{
-            padding: 52px;
-            margin-top: -7px;
-            
-        }
-
-        .bb{
-            background-color:#95c936;
-            border-color:#95c936;
-        }
-
-        .bb:hover{
-            background-color:grey;
-           
-        }
-    
-    @media (max-width: 480px) {
-        .buttoned{
-            padding: 9px;
-            margin-top: 9px;
-        }
-    }
+@media (max-width: 480px) {
+  .buttoned {
+    padding: 12px;
+    margin-top: 8px;
+  }
+}
