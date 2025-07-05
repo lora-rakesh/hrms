@@ -70,20 +70,21 @@
     </div>
 
     <!-- Total Employees Card -->
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0 rounded-4 hover-shadow bg-light">
-        <div class="card-body p-4">
-          <h5 class="card-title text-center fw-bold mb-3">Total Employees</h5>
-          <div class="text-center display-4 fw-semibold text-primary">
-            {{ total_employees }}
-          </div>
-          <p class="text-center text-muted mt-2">Employees Registered in the System</p>
+{% if request.user.role == 'Manager' %}
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 hover-shadow bg-light">
+      <div class="card-body p-4">
+        <h5 class="card-title text-center fw-bold mb-3">Total Employees</h5>
+        <div class="text-center display-4 fw-semibold text-primary">
+          {{ total_employees }}
         </div>
+        <p class="text-center text-muted mt-2">Employees Registered in the System</p>
       </div>
     </div>
-
   </div>
-</div>
+{% endif %}
+
+
 
 {% endblock %}
 

@@ -8,14 +8,14 @@
   --bg-white: #ffffff;
   --border-color: #ddd;
 
-  /* Updated column gradients */
-  --col1: linear-gradient(135deg, #6366f1, #06b6d4);
-  --col2: linear-gradient(135deg, #4f46e5, #0ea5e9);
-  --col3: linear-gradient(135deg, #1e293b, #4b5563);
-  --col4: linear-gradient(135deg, #f472b6, #fcd34d);
-  --col5: linear-gradient(135deg, #06b6d4, #4f46e5);
-  --col6: linear-gradient(135deg, #4ade80, #60a5fa);
-  --col7: linear-gradient(135deg, #818cf8, #f472b6);
+    /* Custom gradients for table headers */
+    --col1: linear-gradient(135deg, #a78bfa, #7dd3fc);
+    --col2: linear-gradient(135deg, #f472b6, #fb923c);
+    --col3: linear-gradient(135deg, #34d399, #60a5fa);
+    --col4: linear-gradient(135deg, #fcd34d, #f472b6);
+    --col5: linear-gradient(135deg, #06b6d4, #4f46e5);
+    --col6: linear-gradient(135deg, #84cc16, #22d3ee);
+    --col7: var(--primary-gradient); /* Status column */
 }
 
 /* Reset */
@@ -31,7 +31,6 @@ body {
   padding: 0;
 }
 
-/* Container */
 .container {
   width: 100%;
   background-color: var(--bg-white);
@@ -41,13 +40,89 @@ body {
   margin-top: 30px;
 }
 
-/* Headings */
-h1 {
-  text-align: center;
-  color: var(--primary-color);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 30px;
+h1, .table h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Form */
+form {
+    margin-top: 30px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+input[type="date"],
+input[type="time"],
+textarea {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+.back-link {
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
 }
 
 /* Table Styling */
@@ -61,7 +136,7 @@ table {
   overflow: hidden;
 }
 
-/* Table Header Gradient Columns */
+/* Header Gradient Colors for 7 Columns */
 table thead tr th:nth-child(1) { background: var(--col1); }
 table thead tr th:nth-child(2) { background: var(--col2); }
 table thead tr th:nth-child(3) { background: var(--col3); }
@@ -70,6 +145,7 @@ table thead tr th:nth-child(5) { background: var(--col5); }
 table thead tr th:nth-child(6) { background: var(--col6); }
 table thead tr th:nth-child(7) { background: var(--col7); }
 
+/* Common Header Style */
 table thead th {
   color: white;
   text-transform: uppercase;
@@ -79,12 +155,11 @@ table thead th {
   text-align: left;
 }
 
-/* Table Body */
-table th,
-table td {
-  border: 1px solid var(--border-color);
-  font-size: 0.95rem;
-  padding: 15px;
+/* Body and Cell Styles */
+table th, table td {
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    padding: 15px;
 }
 
 table tbody tr:nth-child(odd) {
@@ -95,14 +170,37 @@ table tbody tr:hover {
   background-color: #f1f5f9;
 }
 
-/* Last Column Style */
-table th:last-child,
+/* Last Column (Status) Styling */
 table td:last-child {
   white-space: nowrap;
   text-align: center;
 }
 
-/* Responsive Design */
+/* Keep Last Column Gradient on Hover */
+table tbody tr:hover td:last-child {
+    background: var(--primary-hover);
+    color: #ffffff;
+}
+
+/* Home Button */
+.btn-home {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 300px;
+    transition: background 0.3s ease;
+}
+
+.btn-home:hover {
+    background: var(--primary-hover);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .container {
     width: 95%;
@@ -131,3 +229,4 @@ table td:last-child {
     font-size: 0.85rem;
   }
 }
+
