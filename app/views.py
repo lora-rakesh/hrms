@@ -220,50 +220,50 @@ def base(request):
 
 #------------------------------------------------------------- Dashboard #
 
+from .models import Employee  # make sure this is imported
+
 @login_required(login_url='/')
 def dashboard(request):
     if request.user.is_authenticated:
         user = request.user
 
         if user.role == 'Employee':
-
-            # request for user #
-            user = request.user
             employee = Employee.objects.get(employee_id=user.employee_id)
-
-            # birthdays #
             today = datetime.now().date()
-            today_month_day = today.strftime('%m-%d')
-            employees_with_birthday = Employee.objects.filter(date_of_birth__month=today.month, date_of_birth__day=today.day)
-
-            # notifications #
+            employees_with_birthday = Employee.objects.filter(
+                date_of_birth__month=today.month,
+                date_of_birth__day=today.day
+            )
             notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
 
-            return render(request, 'dashboard.html', {'employee': employee , 'notifications': notifications, 'employees_with_birthday': employees_with_birthday, 'today': today})
-        
-        elif user.role == 'HR' or user.role == 'Manager' or user.is_superuser:
+            return render(request, 'dashboard.html', {
+                'employee': employee,
+                'employees_with_birthday': employees_with_birthday,
+                'today': today,
+                'notifications': notifications
+            })
 
-            user = request.user
-            notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-            today = datetime.now().date()
-            today_month_day = today.strftime('%m-%d')
-            employees_with_birthday = Employee.objects.filter(date_of_birth__month=today.month, date_of_birth__day=today.day)
-
+        elif user.role in ['HR', 'Manager'] or user.is_superuser:
             employee = Employee.objects.get(employee_id=user.employee_id)
+            today = datetime.now().date()
+            employees_with_birthday = Employee.objects.filter(
+                date_of_birth__month=today.month,
+                date_of_birth__day=today.day
+            )
+            notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
+            
+            total_employees = Employee.objects.count()  # ✅ Add this line
+
             return render(request, 'dashboard.html', {
                 'employee': employee,
                 'employees_with_birthday': employees_with_birthday,
                 'today': today,
                 'notifications': notifications,
-                
-                }
-            )
+                'total_employees': total_employees  # ✅ Add this line
+            })
 
-        return render(request, 'dashboard.html')
-    
-    else:
-        return render(request,'index.html')
-    
+    return render(request, 'index.html')
+
 
 #------------------------------------------------------------- Employee requests - Notifications  #
 
@@ -2311,40 +2311,45 @@ def leave_delete(request, pk):
     notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
     return render(request, 'leave_delete.html', {'leave': leave,'employee': employee,'notifications': notifications})
 
+# views.py
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from .models import Employee
+from .forms import ProfilePictureForm, CoverPictureForm
 
 @login_required
 def profile_view(request):
     employee = get_object_or_404(Employee, user=request.user)
-    return render(request, 'profile.html', {'employee': employee, 'user': request.user})
-
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from .models import Employee
+    profile_form = ProfilePictureForm()
+    cover_form = CoverPictureForm()
+    return render(request, 'profile.html', {
+        'employee': employee,
+        'form': profile_form,
+        'cover_form': cover_form,
+        'user': request.user
+    })
 
 @login_required
-@csrf_exempt
 def edit_profile_picture(request):
     if request.method == 'POST':
-        employee = Employee.objects.get(user=request.user)
-        if 'profile_picture' in request.FILES:
-            employee.profile_picture = request.FILES['profile_picture']
-            employee.save()
+        employee = get_object_or_404(Employee, user=request.user)
+        form = ProfilePictureForm(request.POST, request.FILES, instance=employee)
+        if form.is_valid():
+            form.save()
             return JsonResponse({
                 'success': True,
                 'new_picture_url': employee.profile_picture.url
             })
     return JsonResponse({'success': False})
 
-
 @login_required
-@csrf_exempt
 def edit_cover_picture(request):
     if request.method == 'POST':
-        employee = Employee.objects.get(user=request.user)
-        if 'cover_picture' in request.FILES:
-            employee.cover_picture = request.FILES['cover_picture']
-            employee.save()
+        employee = get_object_or_404(Employee, user=request.user)
+        form = CoverPictureForm(request.POST, request.FILES, instance=employee)
+        if form.is_valid():
+            form.save()
             return JsonResponse({
                 'success': True,
                 'new_cover_picture_url': employee.cover_picture.url

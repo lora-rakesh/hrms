@@ -25,8 +25,8 @@ urlpatterns = [
     path('employee_requests/', views.employee_requests, name='employee_requests'),
     path('staff_notifications/', views.staff_notifications, name='staff_notifications'),
     path('profile/', views.profile_view, name='profile'),
-    path('profile/edit-picture/', views.edit_profile_picture, name='edit_profile_picture'),
-    path('profile/edit-cover/', views.edit_cover_picture, name='edit_cover_picture'), 
+    path('profile/', views.edit_profile_picture, name='edit_profile_picture'),
+    path('profile/', views.edit_cover_picture, name='edit_cover_picture'), 
     
 
 

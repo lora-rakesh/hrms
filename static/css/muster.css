@@ -1,182 +1,122 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+    --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    --primary-color: #1e293b;
+    --bg-color: #f8fafc;
+    --text-color: #4a5568;
+    --border-color: #e2e8f0;
+    --header-text: white;
+}
+
+/* Table Wrapper */
 #table-responsive-container {
-   
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 2rem auto;
-    margin-top:-20px;
-}
-
-#muster-table {
+    border-radius: 6px;
+    overflow-x: auto;
     background: white;
-    margin-bottom: 0 !important;
-    width: 100%;
-    border-collapse: collapse;
-   
+    margin: 2rem auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    padding: 0;
 }
 
-/* Header Styles */
-#muster-table-header {
-    background-color:red;
-    color: black;
-    border: 0.4px solid black;
-}
-
-#muster-table th {
-    padding: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    
-    text-align: center;
-}
-
-#muster-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    vertical-align: middle;
-    text-align: center;
-}
-
-#muster-table tbody tr:hover {
-    background-color: #f8f9fa;
-    transform: scale(1.002);
-   
-}
-
+/* Title and Divider */
 #muster-title {
-    color: #2193b0;
-    font-weight: 600;
-    margin: 2rem 0 1rem;
-    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem;
     text-align: center;
-    margin-top:-10px;
 }
 
 #muster-divider {
+    width: 80px;
     height: 3px;
-    background:#6dd5ed;
-    border: none;
+    background: var(--primary-color);
+    margin: 0.5rem auto 1.5rem;
     border-radius: 2px;
-    margin: 1rem auto;
-    width: 25%;
-}
-/* Base styles */
-/* Base Container */
-#muster-column {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 1.5rem;
-}
-
-/* Title Styling */
-#muster-title {
-    color: #2c3e50;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    letter-spacing: 0.5px;
-}
-
-#muster-divider {
-    width: 100px;
-    height: 2px;
-    background: #2c3e50;
-    border: none;
-    margin: 1rem auto 2rem;
     opacity: 0.2;
 }
 
-/* Table Container */
-#table-responsive-container {
-    border-radius: 4px;
-    overflow: auto;
-    background: white;
-    margin-bottom: 2rem;
-    border: 1px solid #e2e8f0;
-}
-
-/* Scrollbar Styling */
-#table-responsive-container::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
-}
-
-#table-responsive-container::-webkit-scrollbar-track {
-    background: #f8f9fa;
-}
-
-#table-responsive-container::-webkit-scrollbar-thumb {
-    background: #dee2e6;
-    border-radius: 3px;
-}
-
-/* Main Table Styling */
+/* Table Structure */
 #muster-table {
     width: 100%;
-    border-collapse: collapse;
     min-width: 800px;
+    border-collapse: collapse;
     background: white;
 }
 
-/* Header Styling */
 #muster-table-header tr {
-    background: #f8f9fa;
-    border: 1px solid #e2e8f0;
+    border: none;
 }
 
+/* Table Head Gradient Columns */
+#muster-table thead th:nth-child(1) {
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(2) {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(3) {
+    background: linear-gradient(135deg, #06b6d4, #22d3ee);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(4) {
+    background: linear-gradient(135deg, #0ea5e9, #818cf8);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(5) {
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(6) {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: var(--header-text);
+}
+
+/* Header Cell Styling */
 #muster-table th {
-    color: #2c3e50;
-    font-weight: 600;
+    padding: 15px;
+    font-size: 0.85rem;
+    text-align: center;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 0.875rem;
-    text-align: center;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     letter-spacing: 0.5px;
-    background: #f8f9fa;
 }
 
-/* Table Body Styling */
+/* Table Body */
 #muster-table td {
-    padding: 0.875rem;
+    padding: 0.9rem;
     font-size: 0.9rem;
-    color: #4a5568;
-    border: 1px solid #e2e8f0;
+    color: var(--text-color);
     text-align: center;
+    border: 1px solid var(--border-color);
     vertical-align: middle;
-    background: white;
 }
 
-/* Row Interactions */
-#muster-table tbody tr {
-    transition: background-color 0.2s ease;
-}
-
+/* Hover Effect */
 #muster-table tbody tr:hover {
-    background-color: #f8fafc;
+    background-color: #f1f5f9;
 }
 
-/* Status Column */
-#muster-table td:last-child {
-    font-weight: 500;
-    color: #2c3e50;
-}
-
-/* Even Row Styling */
+/* Even Row Background */
 #muster-table tbody tr:nth-child(even) {
     background-color: #fbfbfd;
 }
 
-/* Responsive Design */
+/* Last Column (Status) */
+#muster-table td:last-child {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* Responsive Media Queries */
 @media screen and (max-width: 1200px) {
     #muster-column {
         padding: 1rem;
     }
-    
+
     #muster-table th,
     #muster-table td {
         padding: 0.75rem;
@@ -187,12 +127,11 @@
     #muster-title {
         font-size: 1.25rem;
     }
-    
+
     #table-responsive-container {
-        margin: 0;
-        border-width: 0 1px;
+        margin: 0 1rem;
     }
-    
+
     #muster-table th,
     #muster-table td {
         padding: 0.625rem;
@@ -204,16 +143,15 @@
     #muster-column {
         padding: 0.75rem;
     }
-    
+
     #muster-title {
         font-size: 1.125rem;
     }
-    
+
     #muster-divider {
-        width: 80px;
-        margin: 0.75rem auto 1.5rem;
+        width: 60px;
     }
-    
+
     #muster-table th,
     #muster-table td {
         padding: 0.5rem;
@@ -224,16 +162,15 @@
 /* Print Styles */
 @media print {
     #table-responsive-container {
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border-color);
     }
-    
+
     #muster-table th {
-        background-color: #f8f9fa !important;
-        color: #2c3e50 !important;
+        background-color: #f0f0f0 !important;
+        color: var(--primary-color) !important;
     }
-    
+
     #muster-table td {
-        color: #4a5568 !important;
+        color: var(--text-color) !important;
     }
 }
-        

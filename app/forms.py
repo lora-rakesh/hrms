@@ -368,8 +368,17 @@ class TaskForm(forms.Form):
     due_date = forms.DateField(widget=forms.SelectDateWidget())  # Date widget for picking a due date
 
 
+# forms.py
+from django import forms
+from .models import Employee
 
 class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = '__all__'
+        fields = ['profile_picture']
+
+class CoverPictureForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = ['cover_picture']
+
