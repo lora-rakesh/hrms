@@ -153,8 +153,8 @@
         }
 
         .bb{
-            background-color:#95c936;
-            border-color:#95c936;
+            background-color:linear-gradient(135deg, #4f46e5, #0ea5e9);
+            border-color:linear-gradient(135deg, #4f46e5, #0ea5e9);
         }
 
         .bb:hover{
