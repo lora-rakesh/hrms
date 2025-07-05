@@ -39,6 +39,13 @@ li {
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
+    color: white;
+}
+.sidebar-item a.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ffffff;
+    transform: translateX(5px);
 }
 
 .main {

@@ -91,7 +91,7 @@
 
     #user-info {
         padding: 1rem 0;
-        margin-top:60px;
+        margin-top:70px;
     }
 
     #user-name {
@@ -193,17 +193,17 @@
     }
 
     .submit-btn {
-        background: #25eb38a8;
+        background: #0a0751;
         color: white;
         border: none;
-        padding: 0.75rem 1.5rem;
+        padding: 0.75rem 1.0rem;
         border-radius: var(--border-radius);
         cursor: pointer;
         transition: var(--transition);
     }
 
     .submit-btn:hover {
-        background: var(--secondary-color);
+        background-color: #0a0751;
     }
 
    
@@ -272,7 +272,7 @@
         max-width: 500px;
         border-radius: 8px;
         position: relative;
-        height:35vh;
+        height:60vh;
     }
 
     .modal-close {
@@ -314,12 +314,12 @@
     transform: scale(1.2);
     }
     .bbt{
-        background-color:#95c936;
-        border-color:#95c936;
+        background-color:#4f46e5;
+        border-color:#4f46e5;
     }
     .bbt:hover {
-        background-color:#95c930;
-        border-color:#95c930;
+        background-color:#4f46e5;
+        border-color:#4f46e5;
         
     }
     .cover-photo {
