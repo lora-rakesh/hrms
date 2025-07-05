@@ -55,25 +55,30 @@
     color: var(--header-text);
 }
 #muster-table thead th:nth-child(2) {
-    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
     color: var(--header-text);
 }
 #muster-table thead th:nth-child(3) {
-    background: linear-gradient(135deg, #06b6d4, #22d3ee);
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
     color: var(--header-text);
 }
 #muster-table thead th:nth-child(4) {
-    background: linear-gradient(135deg, #0ea5e9, #818cf8);
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
     color: var(--header-text);
 }
 #muster-table thead th:nth-child(5) {
-    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
     color: var(--header-text);
 }
 #muster-table thead th:nth-child(6) {
-    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
     color: var(--header-text);
 }
+#muster-table thead th:nth-child(7) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+
 
 /* Header Cell Styling */
 #muster-table th {

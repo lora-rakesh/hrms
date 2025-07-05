@@ -17,37 +17,17 @@
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-<<<<<<< HEAD
-  font-family: 'Poppins', sans-serif;
-=======
   font-family: 'Inter', sans-serif;
   background-color: var(--background-color);
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 .create-link {
   display: inline-block;
-<<<<<<< HEAD
-  padding: 0.5rem 1.2rem;
-  background: linear-gradient(135deg, rgb(60, 160, 255), rgb(25, 118, 210));
-  border: none;
-=======
   padding: 0.5rem 1rem;
   background: var(--primary-gradient);
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
   color: white;
   font-weight: 500;
   text-decoration: none;
-<<<<<<< HEAD
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.create-link:hover {
-  background: rgb(7, 30, 161);
-  transform: scale(1.02);
-=======
   border-radius: 6px;
   border: none;
   font-weight: 500;
@@ -56,37 +36,19 @@
 
 .create-link:hover {
   background: var(--primary-hover);
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 .holidays-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-<<<<<<< HEAD
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-=======
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 .holidays-table th,
 .holidays-table td {
   padding: 0.75rem 1rem;
   text-align: left;
-<<<<<<< HEAD
-  border-bottom: 1px solid #ddd;
-  font-size: 0.95rem;
-}
-
-.holidays-table th {
-  background: linear-gradient(135deg, rgb(60, 160, 255), rgb(25, 118, 210));
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-=======
   border: 1px solid var(--table-border-color);
 }
 
@@ -94,7 +56,6 @@
   background: var(--table-heading-bg);
   color: var(--table-heading-color);
   font-weight: 600;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 #color {
@@ -102,53 +63,6 @@
 }
 
 .view-link {
-<<<<<<< HEAD
-  color: rgb(25, 79, 161);
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-.view-link:hover {
-  color: rgb(7, 30, 161);
-}
-
-.delete-link {
-  color: #f44336;
-  font-weight: 500;
-}
-
-.delete-link:hover {
-  color: #c62828;
-  text-decoration: underline;
-}
-
-.edit-button {
-  background: linear-gradient(135deg, rgb(60, 160, 255), rgb(25, 118, 210));
-  color: white;
-  padding: 6px 14px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.edit-button:hover {
-  background-color: rgb(7, 30, 161);
-}
-
-.delete-button {
-  background-color: #f44336;
-  color: white;
-  padding: 6px 14px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.delete-button:hover {
-  background-color: #e53935;
-=======
   color: var(--primary-color);
   font-weight: 500;
   text-decoration: none;
@@ -162,7 +76,6 @@
   color: var(--danger-color);
   font-weight: 500;
   text-decoration: none;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
 }
 
 .delete-link:hover {
@@ -215,10 +128,7 @@
     border: 1px solid #ddd;
     padding: 0.5rem;
     border-radius: 6px;
-<<<<<<< HEAD
-=======
     background-color: white;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
   }
 
   .holidays-table td {
@@ -234,13 +144,8 @@
     position: absolute;
     left: 0.75rem;
     width: 45%;
-<<<<<<< HEAD
-    font-weight: bold;
-    color: #444;
-=======
     font-weight: 600;
     color: #4b5563;
->>>>>>> 6949ec52414681daf8e50f777af23ccee7f4e74b
   }
 
   .holidays-table td:last-child {

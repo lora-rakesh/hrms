@@ -246,6 +246,56 @@ body {
   transform: scale(1.2);
 }
 
+/* Table Styling for Gradient Column Headers */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+
+table thead th {
+  color: white;
+  padding: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+table th,
+table td {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #f9fafb;
+}
+
+table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+table thead th:nth-child(1) {
+  background: linear-gradient(135deg, #a78bfa, #7dd3fc);
+}
+table thead th:nth-child(2) {
+  background: linear-gradient(135deg, #f472b6, #fb923c);
+}
+table thead th:nth-child(3) {
+  background: linear-gradient(135deg, #34d399, #60a5fa);
+}
+table thead th:nth-child(4) {
+  background: linear-gradient(135deg, #fcd34d, #f472b6);
+}
+table thead th:nth-child(5) {
+  background: linear-gradient(135deg, #06b6d4, #4f46e5);
+}
+table thead th:nth-child(6) {
+  background: linear-gradient(135deg, #f97316, #9333ea);
+}
+table thead th:nth-child(7) {
+  background: linear-gradient(135deg, #10b981, #6366f1); /* ✅ Fix for 7th column */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   #profile-header {
