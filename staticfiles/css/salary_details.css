@@ -21,7 +21,7 @@
   position: relative;
 }
 
-/* Background Watermark */
+/* Watermark */
 .payslip-section {
   position: relative;
   page-break-before: always;
@@ -91,20 +91,52 @@
   margin-top: 10px;
 }
 
-/* Table */
+/* Payslip Table */
 table.payslip-details-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  position: relative;
   background: var(--bg-white);
+  position: relative;
 }
 
-.payslip-details-table th,
+/* Gradient Header Columns */
+.payslip-details-table th:nth-child(1) {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: white;
+}
+
+.payslip-details-table th:nth-child(2) {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
+}
+
+.payslip-details-table th:nth-child(3) {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  color: white;
+}
+
+.payslip-details-table th:nth-child(4) {
+  background: linear-gradient(135deg, #0ea5e9, #818cf8);
+  color: white;
+}
+
+.payslip-details-table th:nth-child(5) {
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  color: white;
+}
+
+.payslip-details-table th {
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  padding: 10px;
+}
+
 .payslip-details-table td {
   border: 1px solid var(--border-color);
   padding: 8px;
-  text-align: left;
+  text-align: center;
   font-size: 0.875rem;
   color: var(--primary-color);
 }
