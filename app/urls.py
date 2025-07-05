@@ -5,15 +5,16 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 
     #  Welcome url #
-    path('',views.indexview,name='index'),
     path('company_check', views.company_check, name='company_check'),
     path('base', views.base, name='base'),
     path('chat_bot', views.chat_bot, name='chat_bot'),
     path('training', views.training, name='training'),
 
     #  Login/Logout url #
-    path('login', views.loginview, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+     path('', views.loginview, name='login'),  # root URL shows login
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('dashboard/', views.dashboard, name='dashboard'),  # or whatever your dashboard view is
+
 
 
     #  Dashboard #

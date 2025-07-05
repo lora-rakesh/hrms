@@ -1,219 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-*{
-    box-sizing: border-box;
+:root {
+    --gradient: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    --gradient-hover: linear-gradient(135deg, #4338ca, #06b6d4);
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --border: #d1d5db;
+    --background: #f1f5f9;
+    --card-bg: #ffffff;
+    --error: #dc2626;
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
-
-.container {
-    width: 90%;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-.content {
+    background: var(--background);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 120px;
 }
 
-.main-content {
-    flex: 1 1 70%;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.welcome-title {
+    font-size: 2.4rem;
+    font-weight: 600;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
 }
 
-footer {
-    position:absolute;
-    bottom:0;
-    width:100%;
-}
-
-/* Tab responsiveness */
-@media (max-width: 768px) {
-
-    header {
-    font-size: 1.2rem;
-    }
-    .main-content {
-    flex: 1 1 100%;
-    }
-
-    footer {
-    font-size: 0.9rem;
-    }
-}
-
-/* Mobile responsiveness */
-@media (max-width: 480px) {
-
-    header {
-        font-size: 1.2rem;
-    }
-
-    body {
-        font-size: auto;
-    }
-
-    .main-content {
-        flex: 1 1 100%;
-    }
-
-    .row.container {
-        justify-content: center;
-
-    }
-
-    .image-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .form form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    footer {
-        font-size: 0.8rem;
-    }
-    #butt{
-       font-size:11px;
-       font-weight:bold;
-    }
-    #forgot{
-        margin-left:-48px;
-    }
-    button{
-        width:70vw;
-    }
-    #imglora1{
-        width: 90%;
-    }
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Young+Serif&display=swap");
-
-.form input {
-    border: none;
-    border-radius: 7px;
-    border: 2px solid #95c936;
-}
-
-.form label{
-    color: #95c936;
-}
-
-
-.form a{
-    color:rgb(0, 0, 0);
-    text-decoration: none;
-    }
-
-.form a span:hover {
-    text-decoration: underline;
-    color: red;
-}
-
-.image-container {
-    width: calc(60% - (10px /2));
-    height: auto;
+.login-wrapper {
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    animation: fadeIn 0.5s ease;
     position: relative;
+    z-index: 2;
 }
 
-.image-container img {
-    width: 90%;
-    height: auto;
-    object-fit: cover;
+.login-box h3 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 600;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
 }
 
-
-/* Media Queries*/
-@media screen and (max-width :768px) {
-    .form-container {
-    flex-direction : column;
+form {
+    display: flex;
+    flex-direction: column;
 }
-.form button{
-    padding-left: 20px;
-    }
-.image-container {
-    width :90%;
-    }
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+    font-size: 15px;
+}
+
+.form-control {
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #6366f1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
 .password-links {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    font-size: 14px;
+    margin: 15px 0 20px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 6px 24px;
+.password-links a {
+    color: #0ea5e9;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.password-links a:hover {
+    color: #0284c7;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    border: none;
+    padding: 12px;
     font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+}
+
+.text-danger {
+    margin-top: 15px;
     font-weight: 500;
     text-align: center;
-    text-decoration: none;
-    border: 2px  rgb(155, 221, 31);
-    border-radius: 12px;
-    color: white;
-    background-color:  #95c936;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    outline: none;
+    color: var(--error);
 }
 
-.btn:hover {
-    color: #fff;
-    background-color:rgb(99, 155, 9);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
-    transform: translateY(-2px);
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.btn:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
+@media (max-width: 480px) {
+    body {
+        padding-top: 100px;
+    }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
+    .welcome-title {
+        font-size: 1.8rem;
+        top: 20px;
+    }
+
+    .login-wrapper {
+        padding: 2rem;
+    }
+
+    .password-links {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .btn-primary {
+        font-size: 15px;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .btn {
-        padding: 8px 16px;
-        font-size: 13px;
-        width: 100%; /* Full width on mobile */
-        max-width: 150px; /* Maximum width to maintain readability */
-    }
-}
-
