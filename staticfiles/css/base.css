@@ -12,7 +12,10 @@ body {
     opacity: 1;
     overflow-y: hidden;
     margin: 0;
+    background-color: #555; 
 }
+    
+
 
 a {
     cursor: pointer;
@@ -243,9 +246,7 @@ a.sidebar-link {
     #noti {
         min-width: 200px; /* Reduce width for smaller screens */
         max-height: 180px; /* Slightly reduce height */
-    }
-}
-
+    }}
 @media (max-width: 480px) {
     #noti {
         min-width: 150px; /* Further reduce width */
