@@ -1,97 +1,118 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  --primary-color: #1e293b;
+  --text-color: #4b5563;
+  --background: #f8fafc;
+  --card-bg: #ffffff;
+  --header-bg: #f1f5f9;
+  --border-color: #e2e8f0;
+  --danger-color: #ef4444;
+}
 
-    .modal-container {
-        background-color: white;
-        border-radius: 8px;
-        padding: 24px;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin: auto;
-        margin-top: 150px;
-    }
+/* Modal Container */
+.modal-container {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin: auto;
+  margin-top: 150px;
+}
 
-    .modal-header {
-        margin-bottom: 20px;
-    }
+/* Modal Header */
+.modal-header {
+  margin-bottom: 20px;
+}
 
-    .modal-title {
-        color:rgb(231, 36, 10);
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin: 0;
-    }
+/* Modal Title */
+.modal-title {
+  color: var(--danger-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
 
-    .leave-details {
-        background-color: #f9fafb;
-        border-radius: 6px;
-        padding: 16px;
-        margin-bottom: 20px;
-    }
+/* Leave Details */
+.leave-details {
+  background-color: var(--background);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
 
-    .detail-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 12px;
-    }
+/* Detail Row */
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
 
-    .detail-row:last-child {
-        margin-bottom: 0;
-    }
+.detail-row:last-child {
+  margin-bottom: 0;
+}
 
-    .label {
-        font-weight: 500;
-        color: #374151;
-    }
+.label {
+  font-weight: 500;
+  color: var(--text-color);
+}
 
-    .value {
-        color: #1f2937;
-    }
+.value {
+  color: var(--primary-color);
+}
 
-    .button-group {
-        display: flex;
-        justify-content: flex-end;
-        gap: 12px;
-        margin-top: 24px;
-    }
+/* Buttons */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
 
-    .btn {
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-weight: 500;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.2s;
-    }
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
-    .btn-delete {
-        background-color: #95c936;
-        color: white;
-    }
+/* Gradient Delete Button */
+.btn-delete {
+  background: var(--primary-gradient);
+  color: white;
+}
 
-    .btn-delete:hover {
-        background-color:rgb(76, 146, 19);
-    }
+.btn-delete:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
 
-    .btn-cancel {
-        background-color: #e5e7eb;
-        color: #374151;
-    }
+/* Cancel Button */
+.btn-cancel {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+}
 
-    .btn-cancel:hover {
-        background-color: #d1d5db;
-    }
+.btn-cancel:hover {
+  background-color: var(--border-color);
+}
 
-    @media (max-width: 640px) {
-        .modal-container {
-            width: 95%;
-            padding: 16px;
-        }
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-container {
+    width: 95%;
+    padding: 16px;
+  }
 
-        .button-group {
-            flex-direction: column-reverse;
-        }
+  .button-group {
+    flex-direction: column-reverse;
+  }
 
-        .btn {
-            width: 100%;
-        }
-    }
+  .btn {
+    width: 100%;
+  }
+}
