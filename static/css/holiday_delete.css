@@ -49,6 +49,18 @@
   font-size: 0.875rem;
 }
 
+/* Gradient Blue (Primary) Button */
+.btn-primary {
+  background: linear-gradient(135deg, rgb(60, 160, 255), rgb(25, 118, 210));
+  color: white;
+}
+
+.btn-primary:hover {
+  background: rgb(7, 30, 161);
+  transform: scale(1.03);
+}
+
+/* Danger Button */
 .btn-danger {
   background-color: var(--danger-color);
   color: white;
@@ -58,6 +70,7 @@
   background-color: var(--danger-hover);
 }
 
+/* Secondary / Cancel Button */
 .btn-secondary {
   background-color: var(--secondary-color);
   color: white;
