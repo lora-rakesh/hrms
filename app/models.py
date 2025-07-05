@@ -103,9 +103,8 @@ class Employee(models.Model):
     bank_name = models.CharField(max_length=100, null=True, blank=True)
     ifsc_code = models.CharField(max_length=11, null=True, blank=True)
     aadhar_number = models.CharField(max_length=12, unique=True, null=True, blank=True)
-    profile_picture = ImageField(upload_to='profile_pictures/', null=True, blank=True, default='profile_pictures/default_profile.jpg')
-    cover_picture = ImageField(upload_to='cover_pictures/', null=True, blank=True, default='cover_pictures/default_cover.jpg')
-    
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+    cover_picture = models.ImageField(upload_to='cover_pictures/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.employee_id and self.user:

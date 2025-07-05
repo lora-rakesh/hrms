@@ -2335,3 +2335,43 @@ def leave_delete(request, pk):
     employee = Employee.objects.get(employee_id=user.employee_id)
     notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
     return render(request, 'leave_delete.html', {'leave': leave,'employee': employee,'notifications': notifications})
+
+
+@login_required
+def profile_view(request):
+    employee = get_object_or_404(Employee, user=request.user)
+    return render(request, 'profile.html', {'employee': employee, 'user': request.user})
+
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from .models import Employee
+
+@login_required
+@csrf_exempt
+def edit_profile_picture(request):
+    if request.method == 'POST':
+        employee = Employee.objects.get(user=request.user)
+        if 'profile_picture' in request.FILES:
+            employee.profile_picture = request.FILES['profile_picture']
+            employee.save()
+            return JsonResponse({
+                'success': True,
+                'new_picture_url': employee.profile_picture.url
+            })
+    return JsonResponse({'success': False})
+
+
+@login_required
+@csrf_exempt
+def edit_cover_picture(request):
+    if request.method == 'POST':
+        employee = Employee.objects.get(user=request.user)
+        if 'cover_picture' in request.FILES:
+            employee.cover_picture = request.FILES['cover_picture']
+            employee.save()
+            return JsonResponse({
+                'success': True,
+                'new_cover_picture_url': employee.cover_picture.url
+            })
+    return JsonResponse({'success': False})
