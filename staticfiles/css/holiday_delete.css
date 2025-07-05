@@ -1,31 +1,52 @@
- .card {
+.card {
   border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   max-width: 500px;
   margin: 20px auto;
-  
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .card-body {
-  padding: 20px;
+  padding: 24px;
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin-bottom: 20px;
-  color: #333;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn {
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 18px;
+  border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
   border: none;
   margin-right: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Gradient Blue (Primary) Button */
+.btn-primary {
+  background: linear-gradient(135deg, rgb(60, 160, 255), rgb(25, 118, 210));
+  color: white;
+}
+
+.btn-primary:hover {
+  background: rgb(7, 30, 161);
+  transform: scale(1.03);
+}
+
+/* Danger Button */
 .btn-danger {
   background-color: #dc3545;
   color: white;
@@ -33,14 +54,17 @@
 
 .btn-danger:hover {
   background-color: #c82333;
+  transform: scale(1.03);
 }
 
+/* Secondary / Cancel Button */
 .btn-secondary {
   background-color: #6c757d;
   color: white;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
   background-color: #5a6268;
+  transform: scale(1.03);
 }
