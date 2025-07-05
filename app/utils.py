@@ -13,7 +13,6 @@ from django.conf import settings
 # def send_approval_email(request, muster_entry, recipient_email):
 #     # Generate the approval link
 #     token = muster_entry.approval_token
-#     approval_url = f"http://{get_current_site(request).domain}/lora/muster/approve/{token}/"
 
 #     # Prepare the email content (plain text version)
 #     subject = "Muster Approval Request"
@@ -138,7 +137,6 @@ from django.template.loader import render_to_string
 #         subject,
 #         message,
 #         settings.DEFAULT_FROM_EMAIL,  # From email
-#         ['loraemployee@gmail.com'],  # To email (you can replace this with the actual admin email)
 #         fail_silently=False,
 #     )
 

@@ -637,7 +637,6 @@ def salary_details(request):
     else:
         payslips = Salary.objects.filter(employee=employee).order_by('-month')[:1]
  
-    logo_url = request.build_absolute_uri(static('Lora.jpg'))
  
     return render(request, 'salary_details.html', {
         'employee': employee,
