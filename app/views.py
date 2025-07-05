@@ -53,30 +53,6 @@ CustomUser = get_user_model()
 
 # Create your views here.
 
-#------------------------------------------------------------- Index #
-
-def indexview(request):
-
-    if request.user.is_authenticated:
-        return render(request, 'dashboard.html')
-    
-    else:
-
-        if request.method == "POST":
-            company_name = request.POST.get('company_name', '').strip()
-            
-            if company_name:
-                company = Company_check.objects.filter(company_name__iexact=company_name).first()
-
-                if company:
-                    return redirect('login')
-                
-                else:
-                    return render(request, 'index.html', {'message': 'No records found for the company.'})
-
-    return render(request, 'index.html')
-
-
 #------------------------------------------------------------- Login #
 #Added This part
 def loginview(request):
@@ -222,24 +198,23 @@ def base(request):
         return render(request, 'dashboard.html', {'employee': employee , 'notifications': notifications})
 
     elif user.role == 'HR' or user.role == 'Manager' or user.is_superuser:
+
         user = request.user
         notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-        
+        today = datetime.now().date()
+        today_month_day = today.strftime('%m-%d')
+        employees_with_birthday = Employee.objects.filter(date_of_birth__month=today.month, date_of_birth__day=today.day)
+        total_employees = Employee.objects.count()
+
         employee = Employee.objects.get(employee_id=user.employee_id)
-        pending_musters = Muster.objects.filter(status='Pending')
-        pending_leave_request = LeaveRequest.objects.filter(status='pending')
-        pending_expense = ExpenseClaim.objects.filter(status='pending')
-        pending_loan = LoanRequest.objects.filter(status='pending')
-        return render(request, 'base.html', {
+        return render(request, 'dashboard.html', {
             'employee': employee,
-            'pending_musters': pending_musters,
-            'pending_leave_request': pending_leave_request,
-            'pending_expense': pending_expense,
-            'pending_loan': pending_loan,
+            'employees_with_birthday': employees_with_birthday,
+            'today': today,
             'notifications': notifications,
-            }
-        )
-    
+            'total_employees': total_employees,
+    })
+
     return render(request,'base.html')
 
 
