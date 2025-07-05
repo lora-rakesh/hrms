@@ -366,3 +366,19 @@ class TaskForm(forms.Form):
     task_name = forms.CharField(max_length=255)
     employee_emails = forms.CharField(max_length=1024)  # For comma-separated emails
     due_date = forms.DateField(widget=forms.SelectDateWidget())  # Date widget for picking a due date
+
+
+# forms.py
+from django import forms
+from .models import Employee
+
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = ['profile_picture']
+
+class CoverPictureForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = ['cover_picture']
+

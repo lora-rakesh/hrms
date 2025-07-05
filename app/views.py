@@ -2286,3 +2286,47 @@ def leave_delete(request, pk):
     notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
     return render(request, 'leave_delete.html', {'leave': leave,'employee': employee,'notifications': notifications})
 
+# views.py
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from .models import Employee
+from .forms import ProfilePictureForm, CoverPictureForm
+
+@login_required
+def profile_view(request):
+    employee = get_object_or_404(Employee, user=request.user)
+    profile_form = ProfilePictureForm()
+    cover_form = CoverPictureForm()
+    return render(request, 'profile.html', {
+        'employee': employee,
+        'form': profile_form,
+        'cover_form': cover_form,
+        'user': request.user
+    })
+
+@login_required
+def edit_profile_picture(request):
+    if request.method == 'POST':
+        employee = get_object_or_404(Employee, user=request.user)
+        form = ProfilePictureForm(request.POST, request.FILES, instance=employee)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({
+                'success': True,
+                'new_picture_url': employee.profile_picture.url
+            })
+    return JsonResponse({'success': False})
+
+@login_required
+def edit_cover_picture(request):
+    if request.method == 'POST':
+        employee = get_object_or_404(Employee, user=request.user)
+        form = CoverPictureForm(request.POST, request.FILES, instance=employee)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({
+                'success': True,
+                'new_cover_picture_url': employee.cover_picture.url
+            })
+    return JsonResponse({'success': False})
