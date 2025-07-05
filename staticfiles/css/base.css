@@ -207,7 +207,7 @@ a.sidebar-link {
 }
 
 .no-notification {
-    background-color: #28a745;
+    background-color: #282ea7;
     color: white;
     padding: 10px;
     text-align: center;
@@ -308,7 +308,7 @@ a.sidebar-link {
 }
 
 .approve {
-    color: #95c936;
+    color: #3636c9;
 }
 
 .approve:hover {
@@ -451,7 +451,7 @@ p {
 
 .chat-header {
     padding: 20px;
-    background: linear-gradient(135deg,rgb(103, 175, 55),rgb(104, 216, 39));
+    background: linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235));
     color: white;
     border-radius: 20px 20px 0 0;
     display: flex;
@@ -523,7 +523,7 @@ p {
 }
 
 .user-message {
-    background: linear-gradient(135deg,rgb(70, 235, 37),rgb(82, 209, 44));
+    background: linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235));
     color: white;
     align-self: flex-end;
     border-bottom-right-radius: 5px;
@@ -565,7 +565,7 @@ p {
 }
 
 .send-button {
-    background: linear-gradient(135deg,rgb(99, 209, 35),rgb(94, 202, 32));
+    background: linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235));
     color: white;
     border: none;
     border-radius: 50%;
@@ -670,13 +670,13 @@ p {
 }
 
 #profileDropdownMenu .dropdown-item:hover {
-    background-color: #95c936;
+    background-color: #2563EB;
     transform: translateX(2px);
 }
 
 #profileGreeting {
     font-weight: 600;
-    color: #2c3e50;
+    color: #332c50;
 }
 
 .dropdown-divider {
