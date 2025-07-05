@@ -48,9 +48,19 @@ li {
     background: linear-gradient(135deg, #5f2c82, #49a09d);
     color: white;
     overflow-y: auto;
+<<<<<<< HEAD
     transition: all 0.4s ease-in-out;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
     z-index: 1000;
+=======
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
+    color: white;
+}
+.sidebar-item a.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ffffff;
+    transform: translateX(5px);
+>>>>>>> 475cf2770f7e596858c7719da22eb381ce0c277e
 }
 
 
