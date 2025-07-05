@@ -1,80 +1,104 @@
 :root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
     --accent: #6366f1;
     --accent-hover: #4f46e5;
-    --text-color: #1a202c;
+    --background: #f9f9fb;
+    --card-bg: #ffffff;
     --bg-light: #f9fafb;
+    --border: #e2e8f0;
     --border-color: #e2e8f0;
+    --text-dark: #1a202c;
+    --text-muted: #555;
+    --text-color: #1a202c;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Remove spin arrows on number inputs */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-}
-
-/* Date input styling */
-input[type="date"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative;
-    padding-right: 40px;
-    cursor: pointer;
-    background-color: white;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    height: 45px;
-    font-size: 0.95rem;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Custom calendar icon */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23343a40' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'></rect><line x1='16' y1='2' x2='16' y2='6'></line><line x1='8' y1='2' x2='8' y2='6'></line><line x1='3' y1='10' x2='21' y2='10'></line></svg>") center/contain no-repeat;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: 0.3s ease;
     padding: 0;
+    background-color: var(--background);
+    color: var(--text-dark);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    opacity: 1;
-}
-
-/* Loan Container */
+/* Container */
+.loan-request-container,
 .loan-container {
     max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 40px auto;
+    padding: 30px 1rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+/* Heading */
+.loan-request-container h2,
+.text h5 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.text h5 {
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
+/* Forms and Summary */
+.loan-form,
+.loan-summary {
+    background-color: #f1f5f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+/* Labels */
+.form-label,
+form label {
+    display: block;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Input and Select Fields */
+input,
+select,
+button,
+.form-controls {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+input:focus,
+select:focus,
+.form-controls:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
 }
 
 /* Form Controls */
 .form-controls {
     background-color: var(--bg-light) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 10px !important;
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
     height: 45px;
 }
 
-.form-controls:focus {
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
-    outline: none;
-}
-
-/* Select Styling */
 select.form-controls {
     appearance: none;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23636363' viewBox='0 0 16 16'><path d='M8 11.5l-5-5h10l-5 5z'/></svg>");
@@ -84,22 +108,90 @@ select.form-controls {
     cursor: pointer;
 }
 
-/* Labels */
-.form-label {
-    font-weight: 500;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+/* Date Input */
+input[type="date"] {
+    appearance: none;
+    position: relative;
+    padding-right: 40px;
+    height: 45px;
+    cursor: pointer;
 }
 
-/* Titles */
-.text h5 {
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    padding-top: 1rem;
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23343a40' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'></rect><line x1='16' y1='2' x2='16' y2='6'></line><line x1='8' y1='2' x2='8' y2='6'></line><line x1='3' y1='10' x2='21' y2='10'></line></svg>") center/contain no-repeat;
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 0;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* Submit Button */
+.btn-dark,
+form button {
+    padding: 0.75rem 2.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-dark:hover,
+form button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+table thead th {
+    background: linear-gradient(90deg, #6366f1, #3b82f6, #06b6d4); /* Gradient header */
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 14px;
+    text-align: center;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+table td {
+    color: var(--text-muted);
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #f9fafb;
+}
+
+table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
 
 /* Divider */
 hr {
@@ -109,25 +201,20 @@ hr {
     border-color: var(--accent);
 }
 
-/* Submit Button */
-.btn-dark {
-    padding: 0.75rem 2.5rem;
-    font-weight: 500;
-    font-size: 1rem;
-    border-radius: 8px;
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    transition: 0.3s ease;
+/* Placeholder */
+::placeholder {
+    color: #a0aec0;
+    opacity: 0.8;
 }
 
-.btn-dark:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+/* Remove number arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
     .loan-container {
         margin: 1rem auto;
@@ -141,12 +228,15 @@ hr {
         font-size: 0.9rem;
     }
 
-    .form-controls {
+    .form-controls,
+    input,
+    select {
         height: 42px;
         font-size: 0.9rem;
     }
 
-    .btn-dark {
+    .btn-dark,
+    form button {
         width: 100%;
         padding: 0.625rem;
     }
@@ -168,12 +258,6 @@ hr {
     .text h5 {
         font-size: 1.1rem;
     }
-}
-
-/* Placeholder Color */
-::placeholder {
-    color: #a0aec0;
-    opacity: 0.8;
 }
 
 /* Dark Mode Support */

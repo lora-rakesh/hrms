@@ -1,35 +1,49 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+    --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --text-color: #1f2937;
+    --background: #f4f7fa;
+    --bg-white: #ffffff;
+    --border-color: #ddd;
 
-/* General reset */
+    /* Extra gradients for table columns */
+    --col1: linear-gradient(135deg, #a78bfa, #7dd3fc);
+    --col2: linear-gradient(135deg, #f472b6, #fb923c);
+    --col3: linear-gradient(135deg, #34d399, #60a5fa);
+    --col4: linear-gradient(135deg, #fcd34d, #f472b6);
+    --col5: linear-gradient(135deg, #06b6d4, #4f46e5);
+}
+
+/* Reset */
 * {
-    /* margin: 0; */
-    /* padding: 0; */
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f7fa;
-    color: #333;
-  
+    background-color: var(--background);
+    color: var(--text-color);
 }
 
+/* Container */
 .container {
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-white);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    border-radius: 10px;
 }
 
-h1 {
+/* Headings */
+h1, .table h1 {
     text-align: center;
-    color: #5f6368;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
     margin-bottom: 30px;
 }
-
-h1, .table h1 {
-    font-size: 2rem;
-    font-weight: 600;
-}
-
 
 /* Employee Details */
 p {
@@ -41,69 +55,69 @@ strong {
     font-weight: bold;
 }
 
-/* Form Styling */
+/* Form */
 form {
     margin-top: 30px;
     width: 500px;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    /* gap: 20px; */
-    padding-right: 100px;
-    padding-left: 18px;
+    padding: 0 20px;
 }
 
-
 label {
-    
     font-size: 1rem;
-    font-weight: 500;
-    margin-top: 5px;
-
+    font-weight: 600;
+    margin-top: 10px;
 }
 
 input, select, textarea {
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     font-size: 1rem;
-    /* padding-right: 150px; */
-    /* padding-bottom: 10px; */
-    
+    transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 input[type="date"],
 input[type="time"],
 textarea {
     width: 100%;
-    
 }
 
 textarea {
     resize: vertical;
 }
 
+/* Buttons */
 button {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 12px;
-    background-color: #92979d;
-    color: #fff;
+    background: var(--primary-gradient);
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    background-color: #555 ;
+    background: var(--primary-hover);
 }
 
+/* Back Link */
 .back-link {
     display: inline-block;
     text-align: center;
     margin-top: 20px;
     font-size: 1rem;
-    color: #007BFF;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -114,53 +128,95 @@ button:hover {
 /* Table Styling */
 table {
     width: 98%;
-    /* margin-top: 500px; */
     border-collapse: collapse;
-    margin-top: 50px;
-    margin-right: 10px;
+    margin: 50px auto 0;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-table th, table td {
+/* Table Header with Gradient per Column */
+table thead tr th:nth-child(1) {
+    background: var(--col1);
+}
+
+table thead tr th:nth-child(2) {
+    background: var(--col2);
+}
+
+table thead tr th:nth-child(3) {
+    background: var(--col3);
+}
+
+table thead tr th:nth-child(4) {
+    background: var(--col4);
+}
+
+table thead tr th:nth-child(5) {
+    background: var(--col5);
+}
+
+/* Add more nth-child if you have more columns */
+table thead th {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     padding: 15px;
     text-align: left;
-    border: 1px solid #ddd;
 }
 
-table th {
-    background-color: #92979d;
-    color: #fff;
+/* Body and Cell Styles */
+table th,
+table td {
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    padding: 15px;
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: #f9fafb;
 }
 
 table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f5f9;
 }
 
-table td {
-    font-size: 0.9rem;
+/* Last Column Styling */
+table th:last-child,
+table td:last-child {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
 }
 
-/* Button - Home link */
+table tbody tr:hover td:last-child {
+    background: var(--primary-hover);
+    color: #ffffff;
+}
+
+/* Home Button */
 .btn-home {
-    display:inline-block;
+    display: inline-block;
     padding: 12px 20px;
-    background-color: #92979d;
-    color: #fff;
-    border-radius: 5px;
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 6px;
     text-decoration: none;
     text-align: center;
     margin-top: 20px;
     margin-left: 300px;
+    transition: background 0.3s ease;
 }
 
 .btn-home:hover {
-    background-color: #555;
+    background: var(--primary-hover);
 }
 
-/* Media Queries for responsiveness */
+/* Responsive */
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -171,19 +227,23 @@ table td {
         font-size: 1.6rem;
     }
 
-    table th, table td {
-        padding: 10px;
+    form {
+        width: 100%;
+        padding: 0;
+    }
+
+    table th,
+    table td {
+        padding: 12px;
         font-size: 0.9rem;
     }
 
     input, select, textarea {
-        padding: 10px;
         font-size: 0.9rem;
     }
 
     button {
-        padding: 10px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 }
 
@@ -192,12 +252,8 @@ table td {
         font-size: 1.4rem;
     }
 
-    form {
-        gap: 15px;
-    }
-
     input, select, textarea {
-        padding: 8px;
+        padding: 10px;
         font-size: 0.85rem;
     }
 
@@ -206,8 +262,11 @@ table td {
         font-size: 0.9rem;
     }
 
-    .back-link, .btn-home {
+    .back-link,
+    .btn-home {
         font-size: 0.9rem;
+        margin-left: 0;
+        display: block;
+        margin: 20px auto 0;
     }
 }
-

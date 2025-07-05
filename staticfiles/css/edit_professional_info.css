@@ -1,86 +1,109 @@
-/* Reset some default browser styles */
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* Root Theme Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+    --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    --primary-solid: #6366f1;
+    --primary-color: #1e293b;
+    --bg-color: #f8fafc;
+    --border-color: #d1d5db;
+    --input-focus-shadow: rgba(99, 102, 241, 0.3);
+}
+
+/* Body Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fa;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
     padding: 20px;
 }
 
+/* Heading */
 h2 {
     text-align: center;
-    color: #4A90E2;
+    color: var(--primary-solid);
     margin-bottom: 30px;
+    font-size: 24px;
 }
 
-/* Form styling */
+/* Form Container */
 form {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
     max-width: 500px;
     margin: 0 auto;
 }
 
+/* Button */
 form button {
     display: block;
-    margin: 20px auto 0 auto; /* Center the button and add some margin */
-    background-color: #4A90E2;
+    margin: 20px auto 0;
+    background: var(--primary-gradient);
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-col
-    
-
+    transition: background 0.3s ease;
 }
 
 form button:hover {
-    background-color: #357ABD;
+    background: var(--primary-hover);
 }
 
+/* Anchor Styling */
 form a {
     display: block;
     text-align: center;
     margin-top: 15px;
-    color: #999;
+    color: #6b7280;
     text-decoration: none;
+    font-size: 14px;
 }
 
 form a:hover {
-    color: #4A90E2;
+    color: var(--primary-solid);
 }
 
-/* Form input fields */
-input[type="text"], input[type="email"], input[type="number"], input[type="password"], select {
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 15px;
+    background-color: #fff;
+    color: var(--primary-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, select:focus {
+input:focus,
+select:focus {
     outline: none;
-    border-color: #4A90E2;
+    border-color: var(--primary-solid);
+    box-shadow: 0 0 0 3px var(--input-focus-shadow);
 }
 
-/* Spacing for each input */
+/* Spacing */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-/* CSRF token styling */
+/* CSRF token (hidden) */
 .csrf-token {
     display: none;
 }
