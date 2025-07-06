@@ -12,10 +12,7 @@ body {
     opacity: 1;
     overflow-y: hidden;
     margin: 0;
-
-
-
-
+    background: #49a09d;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -115,7 +112,7 @@ a.sidebar-link {
     position: sticky;
     top: 0;
     z-index: 1;
-   background: linear-gradient(135deg,#49a09d, #5f2c82);
+   background: #7b5098;
 
 }
 .navbar-expand .navbar-nav {

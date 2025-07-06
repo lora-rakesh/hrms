@@ -130,3 +130,14 @@ table tbody tr:nth-child(odd) {
 table tbody tr:hover {
     background-color: #f1f5f9;
 }
+
+table thead th {
+    background: linear-gradient(135deg, #4f46e5, #0ea5e9); /* Updated gradient */
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 14px;
+    text-align: center;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}

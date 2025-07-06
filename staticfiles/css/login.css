@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
-    --gradient: linear-gradient(135deg, #4f46e5, #0ea5e9);
-    --gradient-hover: linear-gradient(135deg, #4338ca, #06b6d4);
+    --gradient: linear-gradient(135deg, #5f2c82, #49a09d);
+    --gradient-hover: linear-gradient(135deg, #5f2c82, #49a09d);
     --text-dark: #1e293b;
     --text-light: #64748b;
     --border: #d1d5db;
-    --background: #f1f5f9;
+    --background: linear-gradient(135deg, #5f2c82, #49a09d);
     --card-bg: #ffffff;
     --error: #dc2626;
 }
@@ -18,7 +18,7 @@
 }
 
 body {
-    background: var(--background);
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -30,7 +30,7 @@ body {
 .welcome-title {
     font-size: 2.4rem;
     font-weight: 600;
-    background: var(--gradient);
+    background: white;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
@@ -46,7 +46,7 @@ body {
     width: 100%;
     max-width: 440px;
     padding: 2.5rem;
-    background: var(--card-bg);
+    background: white;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     animation: fadeIn 0.5s ease;
@@ -58,7 +58,7 @@ body {
     text-align: center;
     font-size: 1.9rem;
     font-weight: 600;
-    background: var(--gradient);
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
@@ -111,7 +111,7 @@ form {
 }
 
 .btn-primary {
-    background: var(--gradient);
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
     border: none;
     padding: 12px;
     font-size: 16px;
@@ -123,7 +123,7 @@ form {
 }
 
 .btn-primary:hover {
-    background: var(--gradient-hover);
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
 }

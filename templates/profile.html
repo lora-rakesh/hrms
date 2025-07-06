@@ -161,20 +161,31 @@
 
 </div>
 
-<!---- Upload Profile Photo --->
+<!-- Show Current Profile Picture -->
+<div class="profile-section">
+    {% if employee.profile_picture %}
+        <img src="{{ employee.profile_picture.url }}" alt="Profile Picture" class="profile-img">
+    {% else %}
+        <img src="{% static 'images/default_profile.png' %}" alt="Default Profile" class="profile-img">
+    {% endif %}
+    <button class="btn btn-primary mt-2" onclick="openProfileModal()">Change Profile Picture</button>
+</div>
+
+<!-- Upload Profile Picture Modal -->
 <div class="modal" id="uploadModal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
         <h2>Upload Profile Picture</h2>
-        <form id="profilePictureForm" method="POST" enctype="multipart/form-data">
+        <form id="profilePictureForm" method="POST" enctype="multipart/form-data" action="{% url 'edit_profile_picture' %}">
             {% csrf_token %}
             <label for="profilePicture">Choose a Profile Picture</label>
             <input type="file" id="profilePicture" name="profile_picture" accept="image/*" required>
-            {{ form.as_p }}
             <button class="bbt" type="submit" id="submitProfilePicture">Upload</button>
         </form>
     </div>
 </div>
+
+
 
 <!---- Upload Cover Photo --->
 <div class="modal" id="coverUploadModal">
@@ -313,7 +324,7 @@
         });
     });
 
-</script> -->
+</script> 
 
 <script>
     // Elements
@@ -351,7 +362,7 @@
             reader.readAsDataURL(file);
         }
     }
-</script> -->
+</script> 
 
 {% comment %} <script>
     document.addEventListener("DOMContentLoaded", function () {
