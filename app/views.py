@@ -2329,3 +2329,4 @@ def edit_cover_picture(request):
                 'new_cover_picture_url': employee.cover_picture.url
             })
     return JsonResponse({'success': False})
+
