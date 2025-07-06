@@ -80,7 +80,8 @@
   font-size: 0.875rem;  /* Reduced vertical padding */
   border-radius: 6px;
   transition: 0.3s ease;
-  line-height: 1; /* Optional: helps tighten the vertical height */
+  height: 50px;
+  width: 50px; /* Optional: helps tighten the vertical height */
 }
 
 
