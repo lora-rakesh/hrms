@@ -77,7 +77,7 @@
             </div>
 
             <div class="col">
-                <label for="date" class="form-label" style='color: black;'>Date</label>
+                <label for="date" class="form-label" style='color: white;'>Date</label>
                 <input type="date" class="form-control" id="date" value="{{ today_date }}" name="date" required>
             </div>
             
@@ -86,12 +86,12 @@
         <div class="row mx-auto mb-4">
 
             <div class="col">
-                <label for="clock_in_time" class="form-label" style='color: black;'>Clock IN</label>
+                <label for="clock_in_time" class="form-label" style='color: white;'>Clock IN</label>
                 <input type="datetime-local" class="form-control" id="clock_in_time" name="clock_in_time"  value="{{ clock_in_time|date:'Y-m-d H:i' }}" required>
             </div>
 
             <div class="col">
-                <label for="clock_out_time" class="form-label" style='color: black;'>Clock OUT</label>
+                <label for="clock_out_time" class="form-label" style='color: white;'>Clock OUT</label>
                 <input type="datetime-local" class="form-control" id="clock_out_time" name="clock_out_time" value="{{ clock_out_time|date:'Y-m-d H:i' }}" required>
             </div>
             

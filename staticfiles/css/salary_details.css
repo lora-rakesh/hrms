@@ -102,7 +102,7 @@
 .download-btn {
   display: inline-block;
   padding: 10px 20px;
-  background: var(--bg-white);
+  background: linear-gradient(135deg, #5f2c82, #49a09d);
   color: var(--primary-color);
   text-decoration: none;
   border-radius: 5px;
