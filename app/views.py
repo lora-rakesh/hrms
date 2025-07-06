@@ -616,7 +616,6 @@ def salary_details(request):
     return render(request, 'salary_details.html', {
         'employee': employee,
         'payslips': payslips,
-        'logo_url': logo_url,
         'from_month': from_month[:7] if from_month else None,
         'to_month': to_month[:7] if to_month else None,
     })
