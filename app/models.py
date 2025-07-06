@@ -15,12 +15,6 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
-def upload_profile_path(instance, filename):
-    return f'profiles/{instance.user.username}/profile/{filename}'
-
-def upload_cover_path(instance, filename):
-    return f'profiles/{instance.user.username}/cover/{filename}'
-
 
 # Create your models here.
 

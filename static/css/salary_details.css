@@ -7,9 +7,6 @@
   --bg-light: #f8fafc;
   --bg-white: #ffffff;
 }
-.sidebar-item svg {
-    display: inline-block; /* Ensures SVG renders */
-}
 /* Base Styles */
 .salary-slip {
   width: 100%;

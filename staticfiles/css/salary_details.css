@@ -7,9 +7,12 @@
   --bg-light: #f8fafc;
   --bg-white: #ffffff;
 }
-.sidebar-item svg {
-    display: inline-block; /* Ensures SVG renders */
-}
+  .sidebar-item svg {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    fill: currentColor !important; /* Force SVG color */
+  }
 /* Base Styles */
 .salary-slip {
   width: 100%;
