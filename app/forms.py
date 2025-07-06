@@ -248,11 +248,6 @@ class EmployeeProfileForm(forms.ModelForm):
         widget=forms.DateInput(attrs={'type': 'date'}),
     )
 
-class Company_checkForm(forms.ModelForm):
-    class Meta:
-        model = Company_check
-        fields = '__all__'
-
 
 class HolidaysForm(forms.ModelForm):
     class Meta:

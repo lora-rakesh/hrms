@@ -31,8 +31,7 @@ from django.utils.timezone import now
 from datetime import timedelta
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import CustomUser, Employee, Performance
-from .serializers import PerformanceSerializer
+from .models import CustomUser, Employee
 from datetime import timedelta
 from django.shortcuts import render
 from django.utils import timezone
@@ -182,9 +181,6 @@ def contact_us(request):
 
 #------------------------------------------------------------- Company records #
 
-@login_required(login_url='/')
-def company_check(request):
-    return render(request,'company_check.html')
 
 
 #------------------------------------------------------------- Company records #
@@ -981,124 +977,6 @@ def edit_cover_picture(request):
     return render(request, 'profile.html', {'form': form})
 
 
-#------------------------------------------------------------- Task Management #
-
-@login_required(login_url='/')
-def task_management(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    pending_musters = Muster.objects.filter(status='Pending')
-    pending_leave_request = LeaveRequest.objects.filter(status='pending')
-    pending_expense = ExpenseClaim.objects.filter(status='pending')
-    pending_loan = LoanRequest.objects.filter(status='pending')
-    return render(request, 'task_management.html', {
-        'employee_id': user.employee_id,
-        'employee': employee,
-        'notifications': notifications,
-        'pending_musters': pending_musters,
-        'pending_leave_request': pending_leave_request,
-        'pending_expense': pending_expense,
-        'pending_loan': pending_loan
-        }
-    )
-
-
-def assign_task(request):
-    if request.method == 'POST':
-        try:
-            task_name = request.POST['task_name']
-            employee_input = request.POST['employee_emails']
-            due_date = request.POST['due_date']
-
-            employee_input_list = [input.strip() for input in employee_input.split(",")]
-
-            users = CustomUser.objects.filter(email__in=employee_input_list) | CustomUser.objects.filter(employee_id__in=employee_input_list)
-            
-            if users.exists():
-                task = Task.objects.create(name=task_name, due_date=due_date, created_by=request.user)
-                task.assigned_to.set(users)
-
-                for user in users:
-                    notification_message = f"You have been assigned a task: {task_name}, with a due date of {due_date}."
-                    Notification.objects.create(recipient=user, message=notification_message)
-                
-                task.save()
-                return JsonResponse({'status': 'success', 'message': 'Task assigned successfully!'})
-            else:
-                return JsonResponse({'status': 'error', 'message': 'No users found with the provided emails or IDs.'}, status=400)
-
-        except KeyError as e:
-            return JsonResponse({'status': 'error', 'message': f'Missing key: {e.args[0]}'}, status=400)
-        except Exception as e:
-            print(f"Error: {e}")
-            return JsonResponse({'status': 'error', 'message': 'An error occurred while assigning the task.'}, status=500)
-    
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    return render(request, 'task_management.html', {'employee': employee})
-
-
-@login_required
-def tasks_by_date(request):
-    if request.method == 'GET':
-        date_str = request.GET.get('date')
-
-        date = parse_date(date_str)
-
-        if not date:
-            return JsonResponse({'error': 'Invalid date format'}, status=400)
-
-        tasks = Task.objects.filter(due_date=date, assigned_to=request.user)
-        
-        tasks_data = [
-            {
-                'id': task.id,
-                'name': task.name,
-                'due_date': task.due_date,
-                'completed': task.completed,
-                'assigned_to': [f"{user.first_name} {user.last_name}" for user in task.assigned_to.all()]
-            }
-            for task in tasks
-        ]
-        
-        return JsonResponse({'tasks': tasks_data})
-
-
-@csrf_exempt
-def mark_task_complete(request, task_id):
-    try:
-        task = Task.objects.get(id=task_id)
-        task.completed = True
-        task.save()
-        return JsonResponse({'status': 'success', 'message':'Task marked as completed'})
-    
-    except Task.DoesNotExist:
-        return JsonResponse({'status': 'error', 'message': 'Task not found'})
-
-
-def my_tasks(request):
-    try:
-        user = request.user
-
-        tasks = Task.objects.filter(assigned_to=user).order_by('-created_at')
-
-        tasks_data = [
-            {
-                'id': task.id,
-                'name': task.name,
-                'due_date': task.due_date,
-                'completed': task.completed,
-                'assigned_to': [f"{user.first_name} {user.last_name}" for user in task.assigned_to.all()]
-            }
-            for task in tasks
-        ]
-
-        return JsonResponse({'tasks': tasks_data})
-
-    except Exception as e:
-        print(f"Error: {e}")
-        return JsonResponse({'error': str(e)}, status=500)
 
 #------------------------------------------------------------- Expense claim #
 
@@ -1485,81 +1363,6 @@ def user_confirm_delete(request, pk):
     })
 
 
-#------------------------------------------------------------- Policies #
-
-@login_required(login_url='/')
-def policy(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'policy.html' , {
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
-
-@login_required(login_url='/')
-def data_retention_policy(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'data_retention_policy.html' , {
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
-
-@login_required(login_url='/')
-def acceptable_use_policy(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'acceptable_use_policy.html' , {
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
-
-@login_required(login_url='/')
-def cookie_policy(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'cookie_policy.html' , {
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
-
-@login_required(login_url='/')
-def refund_cancellation_policy(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'refund_cancellation_policy.html' , {
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
-
-@login_required(login_url='/')
-def terms_of_service(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'terms_of_service.html' , {
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
-
-
 #------------------------------------------------------------- Add salaries by Staff #
 
 @login_required(login_url='/')
@@ -1681,70 +1484,6 @@ def salary_list(request):
         'month_filter': month_filter,
     })
 
-#------------------------------------------------------------- Performance #
-
-@login_required(login_url='/')
-@staff_member_required
-def performance_entry(request):
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'performance_entry.html', {
-        'employee': employee,
-        'notifications': notifications
-        })
- 
-
-@api_view(['POST'])
-def submit_performance(request):
-    employee_id = request.data.get('employee_id')
-    performance_score = request.data.get('performance_score')
- 
-    if not employee_id or performance_score is None:
-        return Response({'error': 'Missing fields'}, status=400)
- 
-    try:
-        employee = Employee.objects.get(employee_id=employee_id)
-    except Employee.DoesNotExist:
-        return Response({'error': 'Employee not found'}, status=404)
- 
-    Performance.objects.create(employee=employee, performance_score=performance_score)
-    return Response({'message': 'Performance submitted successfully'})
- 
- 
-@api_view(['GET'])
-def top_daily_performers(request):
-    today = now().date()
-    top_performers = Performance.objects.filter(date=today).order_by('-performance_score')[:5]
-    serializer = PerformanceSerializer(top_performers, many=True)
-    return Response(serializer.data)
- 
- 
-@api_view(['GET'])
-def best_monthly_performer(request):
-    first_day = now().replace(day=1)
-    last_day = first_day + timedelta(days=30)
-    top_performer = Performance.objects.filter(date__range=[first_day, last_day]).order_by('-performance_score').first()
-    if top_performer:
-        serializer = PerformanceSerializer(top_performer)
-        return Response(serializer.data)
-    return Response({'message': 'No data available'}, status=404)
-
-
-@login_required(login_url='/')
-def performance_page(request):
-    performance_data = Performance.objects.select_related('employee').all()
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-
-    return render(request, 'performance_page.html', {
-        'performance_data': performance_data,
-        'employee': employee,
-        'notifications': notifications,
-        }
-    )
 
 
 #------------------------------------------------------------- Working days #
@@ -1877,146 +1616,12 @@ def working_days(request):
     })
 
 
-#------------------------------------------------------------- Company adding by staff #
 
-@login_required(login_url='/')
-@staff_member_required
-def company_list(request):
-    companies = Company_check.objects.all()
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    return render(request, 'company_list.html', {'companies': companies,'employee': employee,'notifications': notifications})
-
-@login_required(login_url='/')
-@staff_member_required
-def company_create(request):
-    if request.method == 'POST':
-        form = Company_checkForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('company_list')
-    else:
-        form = Company_checkForm()
-    
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    return render(request, 'company_form.html', {'form': form,'employee': employee,'notifications': notifications})
-
-@login_required(login_url='/')
-@staff_member_required
-def company_edit(request, pk):
-    company = get_object_or_404(Company_check, pk=pk)
-    if request.method == 'POST':
-        form = Company_checkForm(request.POST, instance=company)
-        if form.is_valid():
-            form.save()
-            return redirect('company_list')
-    else:
-        form = Company_checkForm(instance=company)
-    
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    return render(request, 'company_form.html', {'form': form,'employee': employee,'notifications': notifications})
-
-@login_required(login_url='/')
-@staff_member_required
-def company_delete(request, pk):
-    company = get_object_or_404(Company_check, pk=pk)
-    if request.method == 'POST':
-        company.delete()
-        return redirect('company_list')
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    return render(request, 'company_delete.html', {'company': company,'employee': employee,'notifications': notifications})
-
-
-#------------------------------------------------------------- Task list by staff #
-
-@login_required(login_url='/')
-@staff_member_required
-def task_list(request):
-    tasks = Task.objects.all()
-    employee_id = request.GET.get('employee_id', '')
-    month = request.GET.get('month', '')
-
-    if employee_id:
-
-        try:
-            employee = CustomUser.objects.get(employee_id=employee_id)
-            tasks = tasks.filter(assigned_to=employee)
-
-        except CustomUser.DoesNotExist:
-            tasks = tasks.none()
-
-    if month:
-        try:
-            month_start = datetime.strptime(month, '%Y-%m').date()
-            month_end = month_start.replace(day=28) + timedelta(days=4)
-            month_end = month_end.replace(day=1) - timedelta(days=1)
-            tasks = tasks.filter(due_date__range=[month_start, month_end])
-        except ValueError:
-            pass
-
-    months = [
-        {'num': f"{i:02d}", 'name': datetime(2025, i, 1).strftime('%B')}
-        for i in range(1, 13)
-    ]
-
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    return render(request, 'task_list.html', {
-        'tasks': tasks,
-        'months': months,
-        'employee': employee,
-        'notifications': notifications,
-        'current_month': datetime.now().strftime('%Y-%m')
-    })
 
 
 #------------------------------------------------------------- Company adding by staff #
 
-@login_required(login_url='/')
-@staff_member_required
-def performance_list(request):
-    today = timezone.now().date()
-    first_day_of_month = today.replace(day=1)
-    last_day_of_month = first_day_of_month + timedelta(days=31)
-    last_day_of_month = last_day_of_month.replace(day=1) - timedelta(days=1)
 
-    performance_data = Performance.objects.filter(date__range=[first_day_of_month, last_day_of_month])
-
-    employee_id = request.GET.get('employee_id')
-    month = request.GET.get('month')
- 
-    if employee_id:
-        performance_data = performance_data.filter(employee__employee_id=employee_id)
- 
-    if month:
-        month_start = timezone.datetime.strptime(month, '%Y-%m').date()
-        month_end = month_start.replace(day=28) + timedelta(days=4)
-        performance_data = performance_data.filter(date__range=[month_start, month_end])
-
-    employees = Employee.objects.all()
-
-    months = [(timezone.datetime(today.year, m, 1).strftime('%Y-%m'), timezone.datetime(today.year, m, 1).strftime('%B')) for m in range(1, 13)]
- 
-    user = request.user
-    employee = Employee.objects.get(employee_id=user.employee_id)
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
-    return render(request, 'performance_list.html', {
-        'performance_data': performance_data,
-        'employees': employees,
-        'current_month': today.month,
-        'current_year': today.year,
-        'months': months,
-        'employee': employee,
-        'notifications': notifications
-    })
 
 
 #------------------------------------------------------------- Company adding by staff #

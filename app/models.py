@@ -62,14 +62,8 @@ class Notification(models.Model):
         return f"Notification for {self.recipient.employee_id}: {self.message[:5]}"
         
 
-#------------------------------------------------------------- Company check #
 
-class Company_check(models.Model):
-    company_name  = models.CharField(max_length=500, null=True, blank=True)
-     
-    def __str__(self):
-        return self.company_name
-    
+
 
 #------------------------------------------------------------- Holidays #
 
@@ -345,30 +339,7 @@ CustomUser = get_user_model()
 #         ordering = ['due_date']
 
 
-class Task(models.Model):
-    name = models.CharField(max_length=255, default='No Task Name')
-    assigned_to = models.ManyToManyField(CustomUser,related_name="tasks")
-    due_date = models.DateField()
-    completed = models.BooleanField(default=False)
-    created_at = models.DateTimeField(default=timezone.now)
-    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="tasks_created", null=True)  # Added this line
 
-
-    def _str_(self):
-        return self.task_name
-
-    class Meta:
-        ordering = ['due_date']
-
-#------------------------------------------------------------- Performance #
-
-class Performance(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    performance_score = models.IntegerField()
-    date = models.DateField(auto_now_add=True)
- 
-    class Meta:
-        ordering = ['-date']
 
 
     

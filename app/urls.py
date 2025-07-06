@@ -5,9 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 
     #  Welcome url #
-    path('company_check', views.company_check, name='company_check'),
     path('base', views.base, name='base'),
-    path('chat_bot', views.chat_bot, name='chat_bot'),
     path('training', views.training, name='training'),
 
     #  Login/Logout url #
@@ -62,12 +60,6 @@ urlpatterns = [
     # your other URLs...
 
 
-    #  Task #
-    path('task_management/', views.task_management, name='task_management'),
-    path('assign-task/', views.assign_task, name='assign_task'),
-    path('mark-task-complete/<int:task_id>/', views.mark_task_complete, name='mark_task_complete'),
-    path('my-tasks/', views.my_tasks, name='my_tasks'),
-    path('tasks-by-date/', views.tasks_by_date, name='tasks_by_date'),
 
 
     #  Salaries #
@@ -104,14 +96,6 @@ urlpatterns = [
     path('user_confirm_delete/<int:pk>/', views.user_confirm_delete, name='user_confirm_delete'),
 
 
-    #  Policies #
-    path("policy", views.policy, name="policy"),
-    path("data_retention_policy", views.data_retention_policy, name="data_retention_policy"),
-    path("acceptable_use_policy", views.acceptable_use_policy, name="acceptable_use_policy"),
-    path("cookie_policy", views.cookie_policy, name="cookie_policy"),
-    path("refund_cancellation_policy", views.refund_cancellation_policy, name="refund_cancellation_policy"),
-    path("terms_of_service", views.terms_of_service, name="terms_of_service"),
-
 
     #  Salary data for Staff #
     path('create_salary/', views.create_salary, name='create_salary'),
@@ -121,26 +105,7 @@ urlpatterns = [
     path('salary_list', views.salary_list, name='salary_list'),
 
 
-    #  Performance #
-    path('performance-entry/', views.performance_entry, name='performance_entry'),
-    path('performance-page/', views.performance_page, name='performance_page'),
-    
-    path('api/submit-performance/', views.submit_performance, name='submit_performance'),
-    path('api/top-daily-performers/', views.top_daily_performers, name='top_daily_performers'),    
-    path('api/best-employee-month/', views.best_monthly_performer, name='best_monthly_performer'),
 
-
-    #  Company for Staff #
-    path('company_list', views.company_list, name='company_list'),
-    path('company_create', views.company_create, name='company_create'),
-    path('company_edit/<int:pk>', views.company_edit, name='company_edit'),
-    path('company_delete/<int:pk>', views.company_delete, name='company_delete'),
-
-    path('working_days', views.working_days, name='working_days'),
-
-    path('task_list', views.task_list, name='task_list'),
-
-    path('performance_list', views.performance_list, name='performance_list'),
 
 
     #  Employee for Staff #

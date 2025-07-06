@@ -5,19 +5,17 @@ from app.forms import *
 
 # Register your models here.
 
-admin.site.register(Company_check)
+
 admin.site.register(Muster)
 admin.site.register(Employee)
 admin.site.register(Salary)
 admin.site.register(TimeEntry)
 admin.site.register(Notification)
-admin.site.register(Task)
 admin.site.register(Leave)
 admin.site.register(LeaveRequest)
 admin.site.register(ExpenseClaim)
 admin.site.register(LoanRequest)
 admin.site.register(Holiday)
-admin.site.register(Performance)
 
 class CustomUserAdmin(UserAdmin):
 
