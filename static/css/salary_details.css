@@ -7,7 +7,6 @@
   --bg-light: #f8fafc;
   --bg-white: #ffffff;
 }
-
 /* Base Styles */
 .salary-slip {
   width: 100%;
@@ -292,6 +291,5 @@ form button[type="submit"]:hover {
   .payslip-details-table th,
   .payslip-details-table td {
     font-size: 10px;
-    padding: 3px;
-  }
-}
+    padding: 3px;
+  }}
