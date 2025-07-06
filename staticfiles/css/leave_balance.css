@@ -1,9 +1,9 @@
 :root {
-  --col-1: linear-gradient(135deg, #6366f1, #3b82f6);
-  --col-2: linear-gradient(135deg, #3b82f6, #06b6d4);
-  --col-3: linear-gradient(135deg, #06b6d4, #22d3ee);
-  --col-4: linear-gradient(135deg, #0ea5e9, #818cf8);
-  --col-5: linear-gradient(135deg, #6366f1, #7c3aed);
+  --col-1: linear-gradient(135deg, #6366f1, #06b6d4);
+  --col-2: linear-gradient(135deg, #6366f1, #06b6d4);
+  --col-3: linear-gradient(135deg, #6366f1, #06b6d4);
+  --col-4: linear-gradient(135deg, #6366f1, #06b6d4);
+  --col-5: linear-gradient(135deg, #6366f1, #06b6d4);
 
   --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
   --primary-color: #1e293b;
