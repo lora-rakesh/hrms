@@ -12,9 +12,17 @@ body {
     opacity: 1;
     overflow-y: hidden;
     margin: 0;
-    background-color: #555; 
+
+
+
+
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white; /* Optional: Set text color for better contrast */
 }
     
+
 
 
 a {
@@ -107,7 +115,8 @@ a.sidebar-link {
     position: sticky;
     top: 0;
     z-index: 1;
-    background:rgb(255, 255, 255);
+   background: linear-gradient(135deg,#49a09d, #5f2c82);
+
 }
 .navbar-expand .navbar-nav {
     margin-left: auto;
@@ -744,4 +753,3 @@ p {
 .btn-white:hover {
     border-color:#95c936;
 }
-
