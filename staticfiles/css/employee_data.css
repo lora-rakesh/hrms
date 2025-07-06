@@ -80,6 +80,7 @@
   font-size: 0.875rem;
   padding: 0.5rem 1rem; /* Consistent padding instead of width/height % */
   border-radius: 6px;
+<<<<<<< HEAD
   transition: all 0.3s ease;
   line-height: 1.5; /* Better for text alignment */
   min-width: 100px; /* Minimum width for buttons */
@@ -88,6 +89,11 @@
   white-space: nowrap; /* Prevents text wrapping */
   flex-shrink: 0; /* Prevents button from shrinking */
   height: auto; /* Let content determine height */
+=======
+  transition: 0.3s ease;
+  height: 50px;
+  width: 50px; /* Optional: helps tighten the vertical height */
+>>>>>>> 2aae164b90e16276321de40bdf0a041ee79428c5
 }
 
 .bb:hover {

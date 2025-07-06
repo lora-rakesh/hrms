@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Create user{% endblock %}
+{% block title %}Create company{% endblock %}
 
 {% block sidebar %}
 
@@ -12,6 +12,7 @@
         Employee Records
     </a>
 </li>
+
 
 
 <li class="sidebar-item">
@@ -73,27 +74,14 @@
 </li>
 
 
+
 {% endblock %}
 
 {% block content %}
-
-{% load static %}
-{% load crispy_forms_tags %}
-
-<link rel="stylesheet" href="{% static 'css/user_form.css' %}">
-
-<div class='container mt-2 mx-auto fc'>
-
-    <h4 class='text-center mx-auto mb-3'>{% if form.instance.pk %}Edit{% else %}Create{% endif %} User</h4>
-    <form method="POST" class="form-control form-control-sm">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <div class='text-center mx-auto'>
-        <button type="submit" class='btn btn-sm' style='background:rgb(87, 153, 101);'>Save</button>
-      </div>
-    </form>
-
-    <a href="{% url 'user_list' %}" class='btn btn-dark btn-sm'>Back to list</a>
-
-</div>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_company_name">Company Name:</label>
+    <input type="text" name="company_name" value="{{ form.company_name.value }}" id="id_company_name" required>
+    <button type="submit">Save</button>
+</form>
 {% endblock %}
