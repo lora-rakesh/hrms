@@ -950,7 +950,13 @@ def edit_profile_picture(request):
     employee = Employee.objects.get(employee_id=user.employee_id)
     notifications = Notification.objects.filter(recipient=request.user, is_read=False).order_by('-created_at')[:5]
 
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'profile.html', {
+    'form': form,
+    'employee': employee,
+    'user': request.user,
+    'notifications': notifications,
+})
+
 
 
 @login_required(login_url='/')
@@ -2328,3 +2334,4 @@ def edit_cover_picture(request):
                 'new_cover_picture_url': employee.cover_picture.url
             })
     return JsonResponse({'success': False})
+

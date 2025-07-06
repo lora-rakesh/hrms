@@ -59,6 +59,7 @@ urlpatterns = [
     path('edit_banking_info/<int:employee_id>', views.edit_banking_info, name='edit_banking_info'),
     path('edit_profile_picture', views.edit_profile_picture, name='edit_profile_picture'),
     path('edit_cover_picture', views.edit_cover_picture, name='edit_cover_picture'),
+    # your other URLs...
 
 
     #  Task #
