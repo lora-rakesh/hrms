@@ -89,7 +89,7 @@
 
 {% block content %}
 <div class="container">
-    <h4 class="mt-4">Employee's - All users notifications</h4>
+    <h4 class="mt-3" style="color: black;">Employee's - All users notifications</h4>
     <hr>
 
     <!-- Enhanced Filter Form -->
@@ -98,11 +98,11 @@
             {% csrf_token %}
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="employee_id" class="form-label">Enter Employee ID</label>
+                    <label for="employee_id" class="form-label" style="color: black;"></h5>Enter Employee ID</label>
                     <input type="text" id="employee_id" name="employee_id" class="form-control" value="{{ request.POST.employee_id }}" placeholder="Enter Employee ID">
                 </div>
                 <div class="col-md-4">
-                    <label for="request_type" class="form-label">Select Request Type</label>
+                    <label for="request_type" class="form-label" style="color: black;">Select Request Type</label>
                     <select id="request_type" name="request_type" class="form-select">
                         <option value="">All Requests</option>
                         <option value="muster" {% if request.POST.request_type == 'muster' %}selected{% endif %}>Muster Request</option>
@@ -111,12 +111,12 @@
                         <option value="loan" {% if request.POST.request_type == 'loan' %}selected{% endif %}>Loan Request</option>
                     </select>
                 </div>
-                <div class="col-md-4 d-flex buttoned">
-                    <button type="submit" class="btn btn-primary bb">Search</button>
-                </div>
+                <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
             </div>
         </form>
-    </div>
+    </div><br>
 
     <!-- Muster Requests Section -->
     {% if request.method != 'POST' or request_type == '' or request_type == 'muster' %} <!--Added-->
@@ -276,6 +276,7 @@
 
 <!-- Loan Table -->
 {% if request.method != 'POST' or request_type == '' or request_type == 'muster' %} <!--Added-->
+<div class="table-container">
 <h5>Loan Request Review</h5>
 <div class="table-container">
 <div class="table-responsive">

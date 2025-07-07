@@ -90,54 +90,196 @@ form button:hover {
     background-color: var(--primary-hover);
 }
 
-/* Table */
+/* ====================== */
+/* TABLE STYLES */
+/* ====================== */
+
+/* Table Container */
+.table-responsive {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: white;
+}
+
+/* Table Base */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    font-size: 0.95rem;
+    margin-bottom: 0;
     background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
 }
 
-table thead {
-    background-color: #e0e7ff;
-}
-
-table th,
-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid var(--border);
-}
-
-table th {
+/* Table Header */
+table thead th {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    color: white;
     font-weight: 600;
-    color: var(--text-dark);
-    background-color: #edf2ff;
+    padding: 1rem;
+    text-align: center;
+    border: none;
+    white-space: nowrap;
+    z-index: 10;
 }
 
+/* Table Cells */
 table td {
-    color: var(--text-muted);
+    padding: 1rem;
+    border: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
 }
 
-table tbody tr:nth-child(odd) {
+/* Empty State Styling */
+table td[colspan] {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Zebra Striping */
+table tbody tr:nth-child(even) {
     background-color: #f9fafb;
 }
 
+/* Hover Effects */
 table tbody tr:hover {
     background-color: #f1f5f9;
+    transition: background-color 0.2s ease;
 }
 
-table thead th {
-    background: linear-gradient(135deg, #4f46e5, #0ea5e9); /* Updated gradient */
-    color: white;
-    font-weight: 600;
-    border: none;
-    padding: 14px;
-    text-align: center;
-    font-size: 0.95rem;
-    white-space: nowrap;
+/* First and Last Child Border Radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+table tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* Column Specific Styles */
+table th:nth-child(1),
+table td:nth-child(1) {
+    min-width: 150px; /* Loan Type */
+}
+
+table th:nth-child(3),
+table td:nth-child(3) {
+    min-width: 120px; /* Amount */
+    text-align: right;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+    min-width: 100px; /* Duration */
+}
+
+table th:nth-child(5),
+table td:nth-child(5) {
+    min-width: 100px; /* Interest Rate */
+}
+
+table th:nth-child(6),
+table td:nth-child(6) {
+    min-width: 120px; /* Status */
+}
+
+/* Status Badges */
+.status-pending {
+    color: #d97706;
+    background-color: #fef3c7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-approved {
+    color: #065f46;
+    background-color: #d1fae5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-rejected {
+    color: #991b1b;
+    background-color: #fee2e2;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ====================== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ====================== */
+
+@media (max-width: 992px) {
+    .table-responsive {
+        border-radius: 10px;
+    }
+    
+    table th,
+    table td {
+        padding: 0.875rem;
+        font-size: 0.925rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        margin: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+    
+    table th,
+    table td {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Adjust column widths for mobile */
+    table th:nth-child(1),
+    table td:nth-child(1) {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    table th,
+    table td {
+        padding: 0.625rem;
+        font-size: 0.8125rem;
+    }
+    
+    /* Full width tables on small screens */
+    .table-responsive {
+        border-radius: 0;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: calc(100% + 2rem);
+    }
+    
+    /* Remove rounded corners on small screens */
+    table tr:first-child th:first-child,
+    table tr:first-child th:last-child,
+    table tr:last-child td:first-child,
+    table tr:last-child td:last-child {
+        border-radius: 0;
+    }
 }

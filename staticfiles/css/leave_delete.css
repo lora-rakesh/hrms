@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-/* Leave Details */
+/* Leave Details Box */
 .leave-details {
   background-color: var(--background);
   border-radius: 6px;
@@ -63,7 +63,7 @@
   color: var(--primary-color);
 }
 
-/* Buttons */
+/* Button Group */
 .button-group {
   display: flex;
   justify-content: flex-end;
@@ -71,6 +71,7 @@
   margin-top: 24px;
 }
 
+/* Button Base */
 .btn {
   padding: 8px 16px;
   border-radius: 6px;

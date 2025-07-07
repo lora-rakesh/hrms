@@ -113,43 +113,46 @@
         <div class="col-12 d-none d-md-block" class="loan-summary">
 
             <div class='text-center'>
-                <h5 class="text-center mx-auto mt-3">Loan Summary</h5>
+                <h5 class="text-center mx-auto mt-3" style='color: black;'>Loan Summary</h5>
                 <hr class='text-center mx-auto col-9'>
             </div>
 
             <table>
-                <thead>
-                    <tr style="background-color: linear-gradient(135deg, #6366f1, #06b6d4);">
-                        <th>Loan Type</th>
-                        <th>Date</th>
-                        <th>Amount Requested</th>
-                        <th>Duration (months)</th>
-                        <th>Interest Rate (%)</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for loan in loans %}
-                    <tr>
-                        <td>{{ loan.loan_type }}</td>
-                        <td>{{ loan.date }}</td>
-                        <td>{{ loan.loan_amount }}</td>
-                        <td>{{ loan.repayment_duration }}</td>
-                        <td>{{ loan.interest_rate }}</td>
-                        <td>{{ loan.status }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="6">No loan requests found.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
+    <thead style="background: linear-gradient(135deg, #6366f1, #06b6d4); color: white; font-weight: 600; border: none;">
+        <tr style='color: white;'>
+            <th>Loan Type</th>
+            <th>Date</th>
+            <th>Amount Requested</th>
+            <th>Duration (months)</th>
+            <th>Interest Rate (%)</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for loan in loans %}
+        <tr>
+            <td>{{ loan.loan_type }}</td>
+            <td>{{ loan.date }}</td>
+            <td>₹{{ loan.loan_amount }}</td>
+            <td>{{ loan.repayment_duration }}</td>
+            <td>{{ loan.interest_rate }}%</td>
+            <td>
+                <span class="status-{{ loan.status|lower }}">
+                    {{ loan.status }}
+                </span>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No loan requests found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
         </div>
         <div class="col-12 loan-summary d-block d-md-none">
             <div class='text-center'>
-                <h5 class="text-center mx-auto mt-3">Loan Summary</h5>
+                <h5 class="text-center mx-auto mt-3" >Loan Summary</h5>
                 <hr class='text-center mx-auto col-9'>
             </div>
         

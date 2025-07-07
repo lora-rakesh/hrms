@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #49a09d;
+    background-color: var(--background-color);
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
 }
@@ -120,27 +120,42 @@ body {
     color: var(--danger-color);
 }
 
-#employee_id {
-    width: 30vw;
+/* Input + Button Layout (Flex Container) */
+.input-button-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 1rem;
 }
 
+/* Input Field */
+#employee_id {
+    flex: 1;
+    padding: 0.6rem;
+    font-size: 0.875rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Filter Button */
 #btn {
-    margin-left: 480px;
-    margin-top: -95px;
-    height: 5vh;
     background: var(--primary-gradient);
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 0.875rem;
-    padding: 6px 14px;
+    padding: 0.6rem 1.2rem;
     transition: 0.3s ease;
+    height: 5vh;
 }
 
 #btn:hover {
     background: var(--primary-hover);
 }
 
+/* Responsive */
 @media (max-width: 640px) {
     .container {
         padding: 1rem;
@@ -161,22 +176,14 @@ body {
         width: 100%;
         justify-content: flex-end;
     }
-}
 
-@media (max-width: 420px) {
-    .btn-primary {
-        margin-bottom: 25px;
-        margin-left: 170px;
-        height: 5vh;
-    }
-
-    #employee_id {
-        width: 50vw;
+    .input-button-row {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     #btn {
-        margin-left: 250px;
-        margin-top: -65px;
-        height: 4vh;
+        width: 50%;
     }
 }
+
