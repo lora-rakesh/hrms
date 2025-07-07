@@ -64,8 +64,44 @@ class ResetPasswordForm(forms.Form):
  
 
 
+from django import forms
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 class ForgotPasswordForm(forms.Form):
-    email = forms.EmailField(label="Email", max_length=100)
+    email = forms.EmailField(
+        label="Email Address",
+        max_length=100,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your registered email',
+            'autocomplete': 'email',
+            'autocapitalize': 'off',
+            'spellcheck': 'false'
+        }),
+        error_messages={
+            'required': 'Please enter your email address',
+            'invalid': 'Please enter a valid email address'
+        }
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email').lower().strip()
+        
+        # Additional email validation
+        try:
+            validate_email(email)
+        except ValidationError:
+            raise forms.ValidationError("Please enter a valid email address")
+        
+        # Check if email exists in database
+        if not User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError("This email is not registered with us")
+            
+        return email
     
 
 # class ResetPasswordWithOTPForm(forms.Form):
