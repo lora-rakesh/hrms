@@ -166,7 +166,7 @@ html, body {
   border: none;
   color: white;
   padding: 4px 12px;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 0.8125rem;
   cursor: pointer;
   transition: 0.3s ease;
