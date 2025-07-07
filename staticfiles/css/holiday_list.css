@@ -41,13 +41,9 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-<<<<<<< HEAD
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-=======
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   overflow: hidden;
->>>>>>> 4a7312374cbe5ae4fa772b67be147ce2d462830f
 }
 
 .holidays-table th,
@@ -60,13 +56,9 @@
 .holidays-table th {
   background: var(--table-heading-bg);
   color: var(--table-heading-color);
-<<<<<<< HEAD
-  font-weight: 600;
-=======
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
->>>>>>> 4a7312374cbe5ae4fa772b67be147ce2d462830f
 }
 
 #color {

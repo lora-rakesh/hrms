@@ -3,12 +3,12 @@
   --primary-hover: linear-gradient(135deg, #5b21b6, #0891b2);
   --primary-color: #7b2ff7;
   --hover-color: #5b21b6;
-  --text-color: #1f2937;
+  --text-color: black;
   --danger-color: #ef4444;
   --danger-hover: #dc2626;
   --secondary-color: #64748b;
   --secondary-hover: #475569;
-  --card-bg: #ffffff;
+  --card-bg: #9bd0f0;
   --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -20,37 +20,26 @@
   box-shadow: var(--card-shadow);
   max-width: 500px;
   margin: 20px auto;
-<<<<<<< HEAD
   transition: box-shadow 0.3s ease;
+  color: black;
+
 }
 
 .card:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-=======
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  transform: translateY(-3px);
->>>>>>> 4a7312374cbe5ae4fa772b67be147ce2d462830f
 }
 
 .card-body {
   padding: 1.5rem;
+  color: black;
 }
 
 .card-title {
   font-size: 1.5rem;
-<<<<<<< HEAD
   font-weight: 600;
-=======
-  font-weight: 700;
->>>>>>> 4a7312374cbe5ae4fa772b67be147ce2d462830f
   margin-bottom: 1rem;
-  color: var(--text-color);
-  background: var(--primary-gradient);
-  -webkit-text-fill-color: transparent;
+  color: black;
+  
 }
 
 /* Button Base */
@@ -62,6 +51,7 @@
   border: none;
   transition: all 0.3s ease;
   font-size: 0.875rem;
+  color: black;;
 }
 
 /* Primary Gradient Button */
