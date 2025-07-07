@@ -698,29 +698,37 @@ def forgot_password(request):
             except User.DoesNotExist:
                 messages.error(request, "Email address not found.")
                 return redirect('forgot_password')
- 
-            otp = generate_otp()
+            
+            try:
+                otp = generate_otp()
+                india_tz = zoneinfo.ZoneInfo('Asia/Kolkata')
+                current_time = datetime.now(india_tz)
 
-            india_tz = zoneinfo.ZoneInfo('Asia/Kolkata')
-            current_time = datetime.now(india_tz)
-
-            request.session['otp'] = str(otp)
-            request.session['otp_time'] = current_time.strftime('%Y-%m-%d %H:%M:%S%z')
-            request.session['user_email'] = email
- 
-            send_mail(
-                'Password Reset OTP',
-                f'Your OTP for password reset is {otp}. It is valid for 10 minutes.',
-                'your-email@gmail.com',
-                [email],
-                fail_silently=False,
-            )
- 
-            messages.success(request, "OTP sent to your email address.")
-            return redirect('verify_otp')
+                request.session['otp'] = str(otp)
+                request.session['otp_time'] = current_time.strftime('%Y-%m-%d %H:%M:%S%z')
+                request.session['user_email'] = email
+                
+                # Add error handling for email sending
+                try:
+                    send_mail(
+                        'Password Reset OTP',
+                        f'Your OTP for password reset is {otp}. It is valid for 10 minutes.',
+                        settings.DEFAULT_FROM_EMAIL,  # Use from settings
+                        [email],
+                        fail_silently=False,
+                    )
+                    messages.success(request, "OTP sent to your email address.")
+                    return redirect('verify_otp')
+                except Exception as e:
+                    messages.error(request, f"Failed to send email: {str(e)}")
+                    return redirect('forgot_password')
+                    
+            except Exception as e:
+                messages.error(request, f"An error occurred: {str(e)}")
+                return redirect('forgot_password')
     else:
         form = ForgotPasswordForm()
- 
+    
     return render(request, 'forgot_password.html', {'form': form})
  
 def verify_otp(request):
