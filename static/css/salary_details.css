@@ -1,0 +1,156 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  --primary-color: #1e293b;
+  --text-color: #4b5563;
+  --border-color: #e2e8f0;
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.salary-slip {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  color: var(--primary-color);
+}
+
+/* Filter Form */
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--bg-light);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border-color: black;
+}
+
+.filter-form h6 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.filter-form .form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.filter-form label {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.filter-form input[type="month"] {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.search-btn, .download-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.search-btn {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.search-btn:hover {
+  background: var(--primary-hover);
+}
+
+.download-btn {
+  background: #f1f5f9;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+.download-btn:hover {
+  background: #e0f2fe;
+  border-color: #0ea5e9;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed var(--border-color);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.company-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.payslip-details-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+.payslip-details-table th,
+.payslip-details-table td {
+  text-align: left;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.payslip-month-title {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .filter-form .form-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-btn, .download-btn {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .salary-slip {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}

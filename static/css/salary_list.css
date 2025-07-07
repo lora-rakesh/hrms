@@ -1,0 +1,151 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  --primary-color: #1e293b;
+  --text-color: #4b5563;
+  --background: #f8fafc;
+  --table-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --button-bg: #6366f1;
+  --button-hover: #4f46e5;
+}
+
+/* Table Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--table-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  margin-top: 1rem;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background-color: var(--table-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table Header with Multicolor Gradient Columns */
+.table thead th:nth-child(1) {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: white;
+}
+
+.table thead th:nth-child(2) {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
+}
+
+.table thead th:nth-child(3) {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  color: white;
+}
+
+.table thead th:nth-child(4) {
+  background: linear-gradient(135deg, #0ea5e9, #818cf8);
+  color: white;
+}
+
+.table thead th:nth-child(5) {
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  color: white;
+}
+.table thead th:nth-child(6) {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1); /* Action column */
+  color: white;
+}
+/* Common Header and Cell Styling */
+.table th,
+.table td {
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--primary-color);
+}
+
+.table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Buttons */
+.btn,
+.btns {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover,
+.btns:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Layout Helper */
+.ruby {
+  display: ruby;
+}
+
+.buton {
+  width: 10vw;
+  height: 5vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+  }
+
+  .table {
+    min-width: 800px;
+  }
+
+  .btn,
+  .btns {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .buton {
+    width: 20vw;
+    height: 4.5vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    min-width: 900px;
+  }
+
+  .btn,
+  .btns {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .ruby {
+    display: inline;
+  }
+
+  .buton {
+    width: 28vw;
+    height: 4vh;
+  }
+}

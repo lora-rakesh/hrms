@@ -1,0 +1,214 @@
+:root {
+    --gradient-header: linear-gradient(135deg, #6366f1, #06b6d4);
+    --header-bg: black;
+    --hover-bg: #f0f9ff;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
+    --table-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Container */
+.table-responsive {
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    box-shadow: var(--table-shadow);
+    background-color: white;
+}
+
+/* Table Base */
+.table {
+    width: 100%;
+    margin-bottom: 0;
+    background-color: white;
+    border-collapse: collapse;
+    color: var(--text-color);
+}
+
+/* Table Cells */
+.table th,
+.table td {
+    padding: 1rem;
+    white-space: nowrap;
+    min-width: 120px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* Sticky Gradient Header */
+.table th {
+    position: sticky;
+    top: 0;
+    background: var(--gradient-header);
+    color: white;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Hover Row */
+.table tbody tr:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Column Width Adjustments */
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    min-width: 200px;
+    text-align: left;
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Small Screen Tweaks */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.75rem;
+    }
+
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .table {
+        font-size: 0.8125rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.625rem;
+    }
+
+    h5 {
+        font-size: 1.15rem;
+    }
+}
+/* Expense Claim Form Styling */
+.expense-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-controls {
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Label Styling */
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1f2937; /* Dark gray */
+    font-size: 0.95rem;
+}
+
+/* Make labels more prominent */
+.text h5 {
+    color: #111827; /* Very dark gray */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Form Input Styling */
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.form-control:focus {
+    border-color: #6366f1; /* Purple-blue */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+/* Select Dropdown Styling */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+/* File Input Styling */
+.input[type="file"]::file-selector-button {
+    padding: 8px 12px;
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+.input[type="file"]::file-selector-button:hover {
+    background: #e5e7eb;
+}
+
+/* Submit Button Styling */
+.btn-submit {
+    background: var(--gradient-header);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+    width: 200px;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .expense-container {
+        padding: 15px;
+    }
+    
+    .form-controls {
+        padding: 20px;
+    }
+    
+    .row.mx-auto.mb-4 {
+        flex-direction: column;
+    }
+    
+    .col {
+        margin-bottom: 15px;
+    }
+    
+    .col:last-child {
+        margin-bottom: 0;
+    }
+}

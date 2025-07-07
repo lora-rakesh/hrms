@@ -1,0 +1,112 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+  --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  --primary-color: #1e293b;
+  --text-color: #4b5563;
+  --background: #f8fafc;
+  --card-bg: #ffffff;
+  --header-bg: #f1f5f9;
+  --border-color: #e2e8f0;
+  --gray-bg: #f9fafb;
+}
+
+/* Card Container */
+.card {
+  background: var(--card-bg);
+  margin: 2rem auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Card Header */
+.card-header {
+  background: var(--primary-gradient);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h5 {
+  font-size: 1.25rem;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Card Content */
+.card-content {
+  padding: 1.5rem;
+}
+
+/* Grid for Leave Info */
+.leave-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual Leave Box */
+.leave-item {
+  background: var(--gray-bg);
+  padding: 1.25rem;
+  border-radius: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.leave-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+/* Label & Value */
+.leave-label {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.leave-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Back Button */
+.back-link {
+  display: inline-block;
+  background: var(--primary-gradient);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.back-link:hover {
+  background: var(--primary-hover);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .card {
+    margin: 1rem;
+  }
+
+  .card-header {
+    padding: 1rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .leave-grid {
+    gap: 1rem;
+  }
+}

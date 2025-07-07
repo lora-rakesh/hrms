@@ -1,0 +1,181 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+    --primary-hover: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    --primary-color: #1e293b;
+    --bg-color: #f8fafc;
+    --text-color: #4a5568;
+    --border-color: #e2e8f0;
+    --header-text: white;
+}
+
+/* Table Wrapper */
+#table-responsive-container {
+    border-radius: 6px;
+    overflow-x: auto;
+    background: white;
+    margin: 2rem auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    padding: 0;
+}
+
+/* Title and Divider */
+#muster-title {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem;
+    text-align: center;
+}
+
+#muster-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 0.5rem auto 1.5rem;
+    border-radius: 2px;
+    opacity: 0.2;
+}
+
+/* Table Structure */
+#muster-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+    background: white;
+}
+
+#muster-table-header tr {
+    border: none;
+}
+
+/* Table Head Gradient Columns */
+#muster-table thead th:nth-child(1) {
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(2) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(3) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(4) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(5) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(6) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+#muster-table thead th:nth-child(7) {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: var(--header-text);
+}
+
+
+/* Header Cell Styling */
+#muster-table th {
+    padding: 15px;
+    font-size: 0.85rem;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.5px;
+}
+
+/* Table Body */
+#muster-table td {
+    padding: 0.9rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+/* Hover Effect */
+#muster-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Even Row Background */
+#muster-table tbody tr:nth-child(even) {
+    background-color: #fbfbfd;
+}
+
+/* Last Column (Status) */
+#muster-table td:last-child {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 1200px) {
+    #muster-column {
+        padding: 1rem;
+    }
+
+    #muster-table th,
+    #muster-table td {
+        padding: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #muster-title {
+        font-size: 1.25rem;
+    }
+
+    #table-responsive-container {
+        margin: 0 1rem;
+    }
+
+    #muster-table th,
+    #muster-table td {
+        padding: 0.625rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #muster-column {
+        padding: 0.75rem;
+    }
+
+    #muster-title {
+        font-size: 1.125rem;
+    }
+
+    #muster-divider {
+        width: 60px;
+    }
+
+    #muster-table th,
+    #muster-table td {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #table-responsive-container {
+        border: 1px solid var(--border-color);
+    }
+
+    #muster-table th {
+        background-color: #f0f0f0 !important;
+        color: var(--primary-color) !important;
+    }
+
+    #muster-table td {
+        color: var(--text-color) !important;
+    }
+}
