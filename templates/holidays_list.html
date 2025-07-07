@@ -85,38 +85,60 @@
 
 {% endblock %}
 
+{% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/holiday_list.css' %}">
 <div class="holidays-container">
     <h2>Holidays</h2>
-    <a href="{% url 'holiday_create' %}" class="create-link float-end btn-success ch">Create New Holiday</a>
     
-    <table id="color" class="holidays-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Day</th>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for holiday in holidays %}
-          <tr>
-            <td data-label="Name">
-              <a href="{% url 'holiday_view' pk=holiday.pk %}" class="action-link view-link">
-                {{ holiday.name }}
-              </a>
-            </td>
-            <td data-label="Day">{{ holiday.day }}</td>
-            <td data-label="Date">{{ holiday.date }}</td>
-            <td data-label="Actions">
-              <a href="{% url 'holiday_edit' pk=holiday.pk %}" class="action-link edit-link edit-button btn btn-sm btn-warning">Edit</a>
-              <a href="{% url 'holiday_delete' pk=holiday.pk %}" class="action-link delete-link delete-button btn btn-sm btn-danger">Delete</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+    {% if perms.holidays.add_holiday %}
+    <a href="{% url 'holiday_create' %}" class="create-link btn btn-success">
+        Create New Holiday
+    </a>
+    {% endif %}
+    
+    <div class="table-responsive">
+        <table class="holidays-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Day</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for holiday in holidays %}
+                <tr>
+                    <td>
+                        <a href="{% url 'holiday_view' holiday.pk %}">
+                            {{ holiday.name|default:"N/A" }}
+                        </a>
+                    </td>
+                    <td>{{ holiday.day|default:"N/A" }}</td>
+                    <td>{{ holiday.date|date:"Y-m-d"|default:"N/A" }}</td>
+                    <td class="action-buttons">
+                        {% if perms.holidays.change_holiday %}
+                        <a href="{% url 'holiday_edit' holiday.pk %}" class="btn btn-sm btn-warning">
+                            Edit
+                        </a>
+                        {% endif %}
+                        
+                        {% if perms.holidays.delete_holiday %}
+                        <a href="{% url 'holiday_delete' holiday.pk %}" class="btn btn-sm btn-danger">
+                            Delete
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No holidays found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
