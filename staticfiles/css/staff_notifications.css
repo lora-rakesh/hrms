@@ -5,7 +5,7 @@
   --text-color: #4b5563;
   --background: #f8fafc;
   --card-bg: #ffffff;
-  --header-bg: white;
+  --header-bg: black;
   --border-color: #e2e8f0;
   --success-color: #524ade;
   --success-hover: #524ade;
@@ -166,7 +166,7 @@ html, body {
   border: none;
   color: white;
   padding: 4px 12px;
-  border-radius: 10px;
+  border-radius: 6px;
   font-size: 0.8125rem;
   cursor: pointer;
   transition: 0.3s ease;
