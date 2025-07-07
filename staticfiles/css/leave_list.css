@@ -18,12 +18,21 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Header */
-#leave-balances h5 {
-  font-size: 20px;
+/* Responsive Header and Button */
+#leave-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+#leave-header h5 {
+  font-size: 22px;
   font-weight: 600;
   color: var(--primary-color);
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 /* Create Button */
@@ -35,9 +44,8 @@
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
-  margin-bottom: 24px;
   border: none;
-  transition: 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 #create-leave-link:hover {
@@ -50,6 +58,12 @@
   background: var(--card-bg);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#leave-table-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* Responsive Table */
@@ -58,6 +72,23 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   background: var(--card-bg);
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 /* Table Style */
@@ -100,6 +131,55 @@
   color: var(--hover-link);
 }
 
+/* Leave Type Badge */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.action-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 6px;
+  transition: 0.2s ease;
+}
+
+.btn-view {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.btn-view:hover {
+  background-color: #d1fae5;
+}
+
+.btn-edit {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.btn-edit:hover {
+  background-color: #fef08a;
+}
+
+.btn-delete {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.btn-delete:hover {
+  background-color: #fecaca;
+}
+
 /* Input Field */
 #employee_id {
   width: 30vw;
@@ -138,6 +218,16 @@
 
   .epm {
     margin-top: 75px;
+  }
+
+  #leave-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #create-leave-link {
+    width: 100%;
+    text-align: center;
   }
 }
 

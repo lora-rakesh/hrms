@@ -161,15 +161,6 @@
 
 </div>
 
-<!-- Show Current Profile Picture -->
-<div class="profile-section">
-    {% if employee.profile_picture %}
-        <img src="{{ employee.profile_picture.url }}" alt="Profile Picture" class="profile-img">
-    {% else %}
-        <img src="{% static 'images/default_profile.png' %}" alt="Default Profile" class="profile-img">
-    {% endif %}
-    <button class="btn btn-primary mt-2" onclick="openProfileModal()">Change Profile Picture</button>
-</div>
 
 <!-- Upload Profile Picture Modal -->
 <div class="modal" id="uploadModal">
