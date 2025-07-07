@@ -122,7 +122,6 @@ urlpatterns = [
     path('holiday_edit/<int:pk>', views.holiday_edit, name='holiday_edit'),
     path('holiday_delete/<int:pk>', views.holiday_delete, name='holiday_delete'),
 
-
     #  Leave for Staff #
     path('leave_list', views.leave_list, name='leave_list'),
     path('leave_create', views.leave_create, name='leave_create'),
