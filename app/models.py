@@ -319,24 +319,8 @@ class LoanRequest(models.Model):
         return f"/loan-requests/reject/{self.id}/"
     
 
-#------------------------------------------------------------- Task management #
-
-from django.contrib.auth import get_user_model
-CustomUser = get_user_model()
 
 
-# class Task(models.Model):
-#     name = models.CharField(max_length=255, default='No Task Name')
-#     assigned_to = models.ManyToManyField(CustomUser,related_name="tasks")
-#     due_date = models.DateField()
-#     completed = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(default=timezone.now)
-
-#     def _str_(self):
-#         return self.task_name
-
-#     class Meta:
-#         ordering = ['due_date']
 
 
 
