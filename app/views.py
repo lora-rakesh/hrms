@@ -1736,9 +1736,6 @@ def employee_delete(request, pk):
         'current_employee': current_employee,
         'notifications': notifications
     })
-
-
-
 #------------------------------------------------------------- Holidays adding by staff #
 
 @login_required(login_url='/')
