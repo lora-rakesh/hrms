@@ -12,6 +12,7 @@
 
 /* Navigation Bar */
 .navbar {
+<<<<<<< HEAD
   background: var(--primary-light);
   box-shadow: var(--shadow);
   padding: 1rem 2rem;
@@ -22,6 +23,18 @@
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid var(--border);
+=======
+    background-color: linear-gradient(135deg, #5f2c82, #49a09d);
+    box-shadow: var(--shadow);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+>>>>>>> 114750671534ba10357843dd601a2f270e7087ec
 }
 
 .navbar-brand {
