@@ -5,10 +5,10 @@
   --text-color: #4b5563;
   --background: #f8fafc;
   --card-bg: #ffffff;
-  --header-bg: #f1f5f9;
+  --header-bg: black;
   --border-color: #e2e8f0;
-  --success-color: #22c55e;
-  --success-hover: #16a34a;
+  --success-color: #524ade;
+  --success-hover: #524ade;
   --danger-color: #ef4444;
   --danger-hover: #dc2626;
 }
@@ -43,7 +43,7 @@ html, body {
 .table-container h5 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: black;
   padding: 1rem;
   margin: 0 0 1rem;
   border-bottom: 2px solid var(--border-color);
