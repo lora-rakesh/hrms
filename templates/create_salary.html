@@ -79,7 +79,92 @@
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9fafb;
+        color: #1f2937;
+        margin: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #2563eb;
+    }
+
+    form {
+        max-width: 900px;
+        margin: auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    form > div {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #111827;
+        background-color: #f9fafb;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #2563eb;
+        outline: none;
+        background-color: #ffffff;
+    }
+
+    ul {
+        color: black;
+        margin-top: 5px;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+
+    button[type="submit"] {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-weight: 600;
+    }
+
+    button[type="submit"]:hover {
+        background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    }
+</style>
+
+=======
 {% load static %}<br>
+>>>>>>> db0d0f3c3d98ca5fc4f3cba6e8c460889bf84e44
 <h2>Create Salary</h2>
 <link rel="stylesheet" href="{% static 'css/create_salary.css' %}">
 <form method="POST">

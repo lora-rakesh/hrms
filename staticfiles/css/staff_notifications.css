@@ -43,7 +43,7 @@ html, body {
 .table-container h5 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: black;
+  color: white;
   padding: 1rem;
   margin: 0 0 1rem;
   border-bottom: 2px solid var(--border-color);
