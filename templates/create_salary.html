@@ -3,7 +3,14 @@
 {% block title %}Create salary{% endblock %}
 
 {% block sidebar %}
-
+<li class="sidebar-item">
+    <a href="/dashboard" class="sidebar-link active" style='color: black;'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-columns-gap mx-3" viewBox="0 0 16 16">
+            <path d="M6 1v3H1V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm14 12v3h-5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM6 8v7H1V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm14-6v7h-5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/>
+        </svg>
+        HRMS
+    </a>
+</li>
 <li class="sidebar-item">
     <a href="/employee_requests" class="sidebar-link mt-2 w3-bar-item w3-button tablink" style='color: black;'>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-view-list mx-3" viewBox="0 0 16 16">
@@ -12,8 +19,6 @@
         Employee Records
     </a>
 </li>
-
-
 
 <li class="sidebar-item">
     <a href="/employee_list" class="sidebar-link mt-2 w3-bar-item w3-button tablink" style='color: black;'>
@@ -61,8 +66,6 @@
     </a>
 </li>
 
-
-
 <li class="sidebar-item">
     <a href="/user_list" class="sidebar-link mt-2 w3-bar-item w3-button tablink" style='color: black;'>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-rolodex mx-3" viewBox="0 0 16 16">
@@ -72,401 +75,276 @@
         Users
     </a>
 </li>
-
-
-
 {% endblock %}
 
 {% block content %}
-
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f9fafb;
-        color: #1f2937;
-        margin: 20px;
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #2563eb;
-    }
-
-    form {
-        max-width: 900px;
-        margin: auto;
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    form > div {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: 600;
-        color: #374151;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    select,
-    textarea {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        font-size: 14px;
-        color: #111827;
-        background-color: #f9fafb;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-        border-color: #2563eb;
-        outline: none;
-        background-color: #ffffff;
-    }
-
-    ul {
-        color: red;
-        margin-top: 5px;
-        padding-left: 20px;
-        font-size: 13px;
-    }
-
-    button[type="submit"] {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, #6366f1, #06b6d4);
-        color: white;
-        padding: 12px;
-        font-size: 16px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        font-weight: 600;
-    }
-
-    button[type="submit"]:hover {
-        background: linear-gradient(135deg, #4f46e5, #0ea5e9);
-    }
-</style>
-
+{% load static %}<br>
 <h2>Create Salary</h2>
-
+<link rel="stylesheet" href="{% static 'css/create_salary.css' %}">
 <form method="POST">
     {% csrf_token %}
     
-    <!-- Employee ID -->
-    <div>
-        <label for="{{ form.employee_id.id_for_label }}">{{ form.employee_id.label }}</label>
-        {{ form.employee_id }}
-        {% if form.employee_id.errors %}
-            <ul>
-                {% for error in form.employee_id.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <!-- Basic Information -->
+    <div class="form-row">
+        <!-- Employee ID -->
+        <div>
+            <label for="{{ form.employee_id.id_for_label }}">{{ form.employee_id.label }}</label>
+            {{ form.employee_id }}
+            {% if form.employee_id.errors %}
+                <ul class="errorlist">
+                    {% for error in form.employee_id.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Month -->
+        <div>
+            <label for="{{ form.month.id_for_label }}">{{ form.month.label }}</label>
+            {{ form.month }}
+            {% if form.month.errors %}
+                <ul class="errorlist">
+                    {% for error in form.month.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Month -->
-    <div>
-        <label for="{{ form.month.id_for_label }}">{{ form.month.label }}</label>
-        {{ form.month }}
-        {% if form.month.errors %}
-            <ul>
-                {% for error in form.month.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <div class="form-row">
+        <!-- Current Month Calculated Days -->
+        <div>
+            <label for="{{ form.current_month_calculated_days.id_for_label }}">{{ form.current_month_calculated_days.label }}</label>
+            {{ form.current_month_calculated_days }}
+            {% if form.current_month_calculated_days.errors %}
+                <ul class="errorlist">
+                    {% for error in form.current_month_calculated_days.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Current Month Paid Days -->
+        <div>
+            <label for="{{ form.current_month_paid_days.id_for_label }}">{{ form.current_month_paid_days.label }}</label>
+            {{ form.current_month_paid_days }}
+            {% if form.current_month_paid_days.errors %}
+                <ul class="errorlist">
+                    {% for error in form.current_month_paid_days.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Current Month Calculated Days -->
-    <div>
-        <label for="{{ form.current_month_calculated_days.id_for_label }}">{{ form.current_month_calculated_days.label }}</label>
-        {{ form.current_month_calculated_days }}
-        {% if form.current_month_calculated_days.errors %}
-            <ul>
-                {% for error in form.current_month_calculated_days.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <!-- Salary Components -->
+    <h3 class="section-header">Basic Salary</h3>
+    <div class="form-row">
+        <!-- Basic Salary -->
+        <div>
+            <label for="{{ form.basic_salary.id_for_label }}">{{ form.basic_salary.label }}</label>
+            {{ form.basic_salary }}
+            {% if form.basic_salary.errors %}
+                <ul class="errorlist">
+                    {% for error in form.basic_salary.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- House Rent Allowance -->
+        <div>
+            <label for="{{ form.house_rent_allowance.id_for_label }}">{{ form.house_rent_allowance.label }}</label>
+            {{ form.house_rent_allowance }}
+            {% if form.house_rent_allowance.errors %}
+                <ul class="errorlist">
+                    {% for error in form.house_rent_allowance.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Current Month Paid Days -->
-    <div>
-        <label for="{{ form.current_month_paid_days.id_for_label }}">{{ form.current_month_paid_days.label }}</label>
-        {{ form.current_month_paid_days }}
-        {% if form.current_month_paid_days.errors %}
-            <ul>
-                {% for error in form.current_month_paid_days.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Basic Salary -->
-    <div>
-        <label for="{{ form.basic_salary.id_for_label }}">{{ form.basic_salary.label }}</label>
-        {{ form.basic_salary }}
-        {% if form.basic_salary.errors %}
-            <ul>
-                {% for error in form.basic_salary.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- House Rent Allowance -->
-    <div>
-        <label for="{{ form.house_rent_allowance.id_for_label }}">{{ form.house_rent_allowance.label }}</label>
-        {{ form.house_rent_allowance }}
-        {% if form.house_rent_allowance.errors %}
-            <ul>
-                {% for error in form.house_rent_allowance.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Special Allowance -->
-    <div>
-        <label for="{{ form.special_allowance.id_for_label }}">{{ form.special_allowance.label }}</label>
-        {{ form.special_allowance }}
-        {% if form.special_allowance.errors %}
-            <ul>
-                {% for error in form.special_allowance.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Conveyance Allowance -->
-    <div>
-        <label for="{{ form.conveyance_allowance.id_for_label }}">{{ form.conveyance_allowance.label }}</label>
-        {{ form.conveyance_allowance }}
-        {% if form.conveyance_allowance.errors %}
-            <ul>
-                {% for error in form.conveyance_allowance.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- PF Contribution -->
-    <div>
-        <label for="{{ form.pf_contribution.id_for_label }}">{{ form.pf_contribution.label }}</label>
-        {{ form.pf_contribution }}
-        {% if form.pf_contribution.errors %}
-            <ul>
-                {% for error in form.pf_contribution.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Professional Tax -->
-    <div>
-        <label for="{{ form.professional_tax.id_for_label }}">{{ form.professional_tax.label }}</label>
-        {{ form.professional_tax }}
-        {% if form.professional_tax.errors %}
-            <ul>
-                {% for error in form.professional_tax.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Income Tax -->
-    <div>
-        <label for="{{ form.income_tax.id_for_label }}">{{ form.income_tax.label }}</label>
-        {{ form.income_tax }}
-        {% if form.income_tax.errors %}
-            <ul>
-                {% for error in form.income_tax.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Performance Bonus -->
-    <div>
-        <label for="{{ form.performance_bonus.id_for_label }}">{{ form.performance_bonus.label }}</label>
-        {{ form.performance_bonus }}
-        {% if form.performance_bonus.errors %}
-            <ul>
-                {% for error in form.performance_bonus.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Other Incentives -->
-    <div>
-        <label for="{{ form.other_incentives.id_for_label }}">{{ form.other_incentives.label }}</label>
-        {{ form.other_incentives }}
-        {% if form.other_incentives.errors %}
-            <ul>
-                {% for error in form.other_incentives.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Medical Insurance -->
-    <div>
-        <label for="{{ form.medical_insurance.id_for_label }}">{{ form.medical_insurance.label }}</label>
-        {{ form.medical_insurance }}
-        {% if form.medical_insurance.errors %}
-            <ul>
-                {% for error in form.medical_insurance.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Stationery / Miscellaneous -->
-    <div>
-        <label for="{{ form.stationery_misc.id_for_label }}">{{ form.stationery_misc.label }}</label>
-        {{ form.stationery_misc }}
-        {% if form.stationery_misc.errors %}
-            <ul>
-                {% for error in form.stationery_misc.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <div class="form-row">
+        <!-- Special Allowance -->
+        <div>
+            <label for="{{ form.special_allowance.id_for_label }}">{{ form.special_allowance.label }}</label>
+            {{ form.special_allowance }}
+            {% if form.special_allowance.errors %}
+                <ul class="errorlist">
+                    {% for error in form.special_allowance.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Conveyance Allowance -->
+        <div>
+            <label for="{{ form.conveyance_allowance.id_for_label }}">{{ form.conveyance_allowance.label }}</label>
+            {{ form.conveyance_allowance }}
+            {% if form.conveyance_allowance.errors %}
+                <ul class="errorlist">
+                    {% for error in form.conveyance_allowance.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
     <!-- Deductions -->
-    <div>
-        <label for="{{ form.deductions.id_for_label }}">{{ form.deductions.label }}</label>
-        {{ form.deductions }}
-        {% if form.deductions.errors %}
-            <ul>
-                {% for error in form.deductions.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <h3 class="section-header">Deductions</h3>
+    <div class="form-row">
+        <!-- PF Contribution -->
+        <div>
+            <label for="{{ form.pf_contribution.id_for_label }}">{{ form.pf_contribution.label }}</label>
+            {{ form.pf_contribution }}
+            {% if form.pf_contribution.errors %}
+                <ul class="errorlist">
+                    {% for error in form.pf_contribution.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Professional Tax -->
+        <div>
+            <label for="{{ form.professional_tax.id_for_label }}">{{ form.professional_tax.label }}</label>
+            {{ form.professional_tax }}
+            {% if form.professional_tax.errors %}
+                <ul class="errorlist">
+                    {% for error in form.professional_tax.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Gross Salary -->
-    <div>
-        <label for="{{ form.gross_salary.id_for_label }}">{{ form.gross_salary.label }}</label>
-        {{ form.gross_salary }}
-        {% if form.gross_salary.errors %}
-            <ul>
-                {% for error in form.gross_salary.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <div class="form-row">
+        <!-- Income Tax -->
+        <div>
+            <label for="{{ form.income_tax.id_for_label }}">{{ form.income_tax.label }}</label>
+            {{ form.income_tax }}
+            {% if form.income_tax.errors %}
+                <ul class="errorlist">
+                    {% for error in form.income_tax.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Medical Insurance -->
+        <div>
+            <label for="{{ form.medical_insurance.id_for_label }}">{{ form.medical_insurance.label }}</label>
+            {{ form.medical_insurance }}
+            {% if form.medical_insurance.errors %}
+                <ul class="errorlist">
+                    {% for error in form.medical_insurance.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Net Salary -->
-    <div>
-        <label for="{{ form.net_salary.id_for_label }}">{{ form.net_salary.label }}</label>
-        {{ form.net_salary }}
-        {% if form.net_salary.errors %}
-            <ul>
-                {% for error in form.net_salary.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <!-- Other Components -->
+    <h3 class="section-header">Additional Components</h3>
+    <div class="form-row">
+        <!-- Performance Bonus -->
+        <div>
+            <label for="{{ form.performance_bonus.id_for_label }}">{{ form.performance_bonus.label }}</label>
+            {{ form.performance_bonus }}
+            {% if form.performance_bonus.errors %}
+                <ul class="errorlist">
+                    {% for error in form.performance_bonus.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Other Incentives -->
+        <div>
+            <label for="{{ form.other_incentives.id_for_label }}">{{ form.other_incentives.label }}</label>
+            {{ form.other_incentives }}
+            {% if form.other_incentives.errors %}
+                <ul class="errorlist">
+                    {% for error in form.other_incentives.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Total Variable Pay -->
-    <div>
-        <label for="{{ form.total_variable_pay.id_for_label }}">{{ form.total_variable_pay.label }}</label>
-        {{ form.total_variable_pay }}
-        {% if form.total_variable_pay.errors %}
-            <ul>
-                {% for error in form.total_variable_pay.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <!-- Summary -->
+    <h3 class="section-header">Salary Summary</h3>
+    <div class="form-row">
+        <!-- Gross Salary -->
+        <div>
+            <label for="{{ form.gross_salary.id_for_label }}">{{ form.gross_salary.label }}</label>
+            {{ form.gross_salary }}
+            {% if form.gross_salary.errors %}
+                <ul class="errorlist">
+                    {% for error in form.gross_salary.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Net Salary -->
+        <div>
+            <label for="{{ form.net_salary.id_for_label }}">{{ form.net_salary.label }}</label>
+            {{ form.net_salary }}
+            {% if form.net_salary.errors %}
+                <ul class="errorlist">
+                    {% for error in form.net_salary.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Per Day Salary -->
-    <div>
-        <label for="{{ form.per_day_salary.id_for_label }}">{{ form.per_day_salary.label }}</label>
-        {{ form.per_day_salary }}
-        {% if form.per_day_salary.errors %}
-            <ul>
-                {% for error in form.per_day_salary.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    <div class="form-row">
+        <!-- Per Day Salary -->
+        <div>
+            <label for="{{ form.per_day_salary.id_for_label }}">{{ form.per_day_salary.label }}</label>
+            {{ form.per_day_salary }}
+            {% if form.per_day_salary.errors %}
+                <ul class="errorlist">
+                    {% for error in form.per_day_salary.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Actual Salary -->
+        <div>
+            <label for="{{ form.actual_salary.id_for_label }}">{{ form.actual_salary.label }}</label>
+            {{ form.actual_salary }}
+            {% if form.actual_salary.errors %}
+                <ul class="errorlist">
+                    {% for error in form.actual_salary.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Actual Salary -->
-    <div>
-        <label for="{{ form.actual_salary.id_for_label }}">{{ form.actual_salary.label }}</label>
-        {{ form.actual_salary }}
-        {% if form.actual_salary.errors %}
-            <ul>
-                {% for error in form.actual_salary.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Loan Deductions -->
-    <div>
-        <label for="{{ form.loan_deductions.id_for_label }}">{{ form.loan_deductions.label }}</label>
-        {{ form.loan_deductions }}
-        {% if form.loan_deductions.errors %}
-            <ul>
-                {% for error in form.loan_deductions.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <!-- Total Fixed Salary -->
-    <div>
-        <label for="{{ form.total_fixed_salary.id_for_label }}">{{ form.total_fixed_salary.label }}</label>
-        {{ form.total_fixed_salary }}
-        {% if form.total_fixed_salary.errors %}
-            <ul>
-                {% for error in form.total_fixed_salary.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <button type="submit">Save</button>
+    <button type="submit">Save Salary</button>
 </form>
-
 {% endblock %}
-
-
