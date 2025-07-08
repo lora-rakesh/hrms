@@ -80,6 +80,7 @@ body {
   border-radius: 6px;
   margin: 0 10px;
   transition: all 0.2s ease;
+  background-color: transparent;
 }
 
 
@@ -220,6 +221,7 @@ select:focus {
   cursor: pointer;
   transition: all 0.3s;
   border: none;
+  background-color: linear-gradient(135deg, #6366f1, #4f46e5) ;
 }
 
 .btn-primary {
