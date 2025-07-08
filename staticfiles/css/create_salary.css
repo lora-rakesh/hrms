@@ -80,7 +80,6 @@ body {
   border-radius: 6px;
   margin: 0 10px;
   transition: all 0.2s ease;
-  background-color: transparent;
 }
 
 
@@ -268,4 +267,4 @@ select:focus {
   .form-container {
     padding: 20px;
   }
-}
+} 
