@@ -101,7 +101,7 @@
         {% csrf_token %}
 
         <div>
-            <label for="{{ form.employee_id.id_for_label }}">Employee ID:</label>
+            <label for="{{ form.employee_id.id_for_label }}" >Employee ID:</label>
             {{ form.employee_id }}
             {% if form.employee_id.errors %}
                 <div class="error">
