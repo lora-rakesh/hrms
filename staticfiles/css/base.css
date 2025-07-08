@@ -223,7 +223,7 @@ a.sidebar-link {
 }
 
 .no-notification {
-    background-color: #28a745;
+    background-color: #523bb0;
     color: white;
     padding: 10px;
     text-align: center;
@@ -748,5 +748,5 @@ p {
 
 
 .btn-white:hover {
-    border-color:#95c936;
+    border-color:#6936c9;
 }
