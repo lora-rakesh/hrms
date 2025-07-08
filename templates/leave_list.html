@@ -96,16 +96,16 @@
 
 {% block content %}
 
-
+<br>
 <div id="table-responsive">
-    <h5>Leave Balances</h5>
+    <h4 style="color: black;">Leave Balances</h4>
     <a class="float-end mz-3" href="{% url 'leave_create' %}" id="create-leave-link">+Create New Leave</a>
 
     <!-- Filter Form -->
     <div class="mt-3">
         <form method="get" class="form-inline">
             <div class="form-group mz-3">
-                <label for="employee_id" class="epm mr-2">Employee ID:</label>
+                <label for="employee_id" class="epm mr-2" style="color: black;">Employee ID:</label>
                 <input type="text" name="employee_id" id="employee_id" value="{{ employee_id_filter }}" class="form-control" placeholder="Enter Employee ID">
             </div>
             <button type="submit" class="btn btn-primary ml-2" style="background-color:#613ffc;border-color:#613ffc;">Filter</button>
