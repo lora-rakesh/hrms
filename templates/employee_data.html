@@ -90,36 +90,40 @@
     <h5 class="mt-3" style="color: black;">All users Data</h5>
     <hr>
     
-    <!-- Filter Form -->
+  <!-- Filter Form -->
     <div class="filter-form">
         <form method="POST" class="mb-2">
             {% csrf_token %}
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="employee_id" class="form-label" style="color: black;">Enter Employee ID</label>
+                    <label for="employee_id" class="form-label">Enter Employee ID</label>
                     <input type="text" id="employee_id" name="employee_id" class="form-control" value="{{ request.POST.employee_id }}" placeholder="Enter Employee ID">
                 </div>
 
                 <div class="col-md-4">
-                    <label for="request_type" class="form-label" style="color: black;">Select Request Type</label>
+                    <label for="request_type" class="form-label">Select Request Type</label>
                     <select id="request_type" name="request_type" class="form-select">
                         <option value="">All Requests</option>
                         <option value="muster" {% if request.POST.request_type == 'muster' %}selected{% endif %}>Muster Request</option>
                         <option value="leave" {% if request.POST.request_type == 'leave' %}selected{% endif %}>Leave Request</option>
                         <option value="expense" {% if request.POST.request_type == 'expense' %}selected{% endif %}>Expense Claim Request</option>
-                        <option value="loan" {% if request.POST.request_type == 'loan' %}selected{% endif %}>Loan Application</option>
+                        <option value="loan" {% if request.POST.request_type == 'loan' %}selected{% endif %}>Loan Request</option>
                         <option value="time_entry" {% if request.POST.request_type == 'time_entry' %}selected{% endif %}>Regular Muster Status</option>
                     </select>
                 </div>
 
-                <div class="filter-group" style="align-self: end;">
-      <button type="submit" class="search-btn">Search</button>
+                <div class="col-md-4 d-flex buttoned">
+                    <button type="submit" class="btn btn-primary bb">Search</button>
+                </div>
+            </div>
+        </form>
     </div>
+
     <!-- Time Entries Section -->
     {% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'time_entry' %}
     <!--Added above line-->
     <div class="table-container">
-        <h5 class="section-header">Employee Regular In-Out Status</h5>
+        <h5 class="section-header">Employee Regular Muster Status</h5>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -176,10 +180,10 @@
     {% endif %}
 
 <!-- Muster Requests -->
-{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'time_entry' %}
+{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'muster' %}
 <!--Added above line-->
 <div class="table-container">
-    <h5 class="section-header">In-Out Requests</h5>
+    <h5 class="section-header">Muster Requests</h5>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -208,7 +212,7 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="7" class="text-center">No In-Out requests available.</td>
+                    <td colspan="7" class="text-center">No muster requests available.</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -218,7 +222,7 @@
 {% endif %}
 
 <!-- Leave Requests Section -->
-{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'time_entry' %}
+{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'leave' %}
 <!--Added above line-->
 <div class="table-container">
     <h5 class="section-header">Leave Requests</h5>
@@ -260,10 +264,10 @@
 {% endif %}
 
 <!-- Expense Claims Section -->
-{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'time_entry' %}
+{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'expense' %}
 <!--Added above line-->
 <div class="table-container">
-    <h5 class="section-header">Claim Overview</h5>
+    <h5 class="section-header">Expense Claims</h5>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -309,11 +313,11 @@
 </div>
 {% endif %}
 
-<!-- Loan Applications Section -->
-{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'time_entry' %}
+<!-- Loan Requests Section -->
+{% if request.method != 'POST' or request.POST.request_type == '' or request.POST.request_type == 'loan' %}
 <!--Added above line-->
 <div class="table-container">
-    <h5 class="section-header">Loan Applications</h5>
+    <h5 class="section-header">Loan Requests</h5>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -342,7 +346,7 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="7" class="text-center">No Loan Applications available.</td>
+                    <td colspan="7" class="text-center">No loan requests available.</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -351,4 +355,4 @@
 </div>
 {% endif %}
 </div>
-{% endblock %}
+{% endblock %} 
