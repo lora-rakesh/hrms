@@ -96,12 +96,12 @@
             {% csrf_token %}
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="employee_id" class="form-label">Enter Employee ID</label>
+                    <label for="employee_id" class="form-label" style="color:black;">Enter Employee ID</label>
                     <input type="text" id="employee_id" name="employee_id" class="form-control" value="{{ request.POST.employee_id }}" placeholder="Enter Employee ID">
                 </div>
 
                 <div class="col-md-4">
-                    <label for="request_type" class="form-label">Select Request Type</label>
+                    <label for="request_type" class="form-label" style="color:black;">Select Request Type</label>
                     <select id="request_type" name="request_type" class="form-select">
                         <option value="">All Requests</option>
                         <option value="muster" {% if request.POST.request_type == 'muster' %}selected{% endif %}>Muster Request</option>

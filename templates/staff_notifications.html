@@ -86,24 +86,22 @@
 </li>
 
 {% endblock %}
-
 {% block content %}
 <div class="container">
-    <h4 class="mt-3" style="color: black;">Employee's - All users notifications</h4>
+    <h4 class="mt-4" style="color:black;">Employee's - All users notifications</h4>
     <hr>
 
- 
     <!-- Enhanced Filter Form -->
     <div class="filter-form">
         <form method="POST">
             {% csrf_token %}
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="employee_id" class="form-label">Enter Employee ID</label>
+                    <label for="employee_id" class="form-label" style="color:black;">Enter Employee ID</label>
                     <input type="text" id="employee_id" name="employee_id" class="form-control" value="{{ request.POST.employee_id }}" placeholder="Enter Employee ID">
                 </div>
                 <div class="col-md-4">
-                    <label for="request_type" class="form-label">Select Request Type</label>
+                    <label for="request_type" class="form-label" style="color:black;">Select Request Type</label>
                     <select id="request_type" name="request_type" class="form-select">
                         <option value="">All Requests</option>
                         <option value="muster" {% if request.POST.request_type == 'muster' %}selected{% endif %}>Muster Request</option>
@@ -120,9 +118,9 @@
     </div>
 
     <!-- Muster Requests Section -->
-    {% if is_initial_load or selected_request_type == '' or selected_request_type == 'muster' %} <!--Added-->
+    {% if request.method != 'POST' or request_type == '' or request_type == 'muster' %} <!--Added-->
     <div class="table-container">
-        <h5 class="section-header">Muster Requests</h5>
+        <h5 class="section-header" style="color:black;">Muster Requests</h5>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -170,10 +168,10 @@
     {% endif %}
 
     <!-- Leave Requests Section -->
-   {% if is_initial_load or selected_request_type == '' or selected_request_type == 'leave' %}<!--Added-->
+   {% if request.method != 'POST' or request_type == '' or request_type == 'leave' %}<!--Added-->
 
     <div class="table-container">
-        <h5 class="section-header">Leave Requests</h5>
+        <h5 class="section-header" style="color:black;">Leave Requests</h5>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -221,10 +219,10 @@
     {% endif %}
 
 <!-- Expense Table -->
-{% if is_initial_load or selected_request_type == '' or selected_request_type == 'expense' %} <!--Added-->
+{% if request.method != 'POST' or request_type == '' or request_type == 'expense' %} <!--Added-->
 
     <div class="table-container">
-<h5>Expense Claim Request</h5>
+<h5 style="color:black;">Expense Claim Request</h5>
 <div class="table-responsive">
 <table class="table">
     <thead style="background-color: #f1f1f1;">
@@ -276,8 +274,8 @@
 {% endif %}
 
 <!-- Loan Table -->
-{% if is_initial_load or selected_request_type == '' or selected_request_type == 'loan' %} <!--Added-->
-<h5>Loan Request Review</h5>
+{% if request.method != 'POST' or request_type == '' or request_type == 'loan' %} <!--Added-->
+<h5 style="color:black;">Loan Request Review</h5>
 <div class="table-container">
 <div class="table-responsive">
 <table class="table">
