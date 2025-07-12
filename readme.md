@@ -5,9 +5,9 @@ A full-featured HRMS (Human Resource Management System) built using Django and D
 
 ## Features
 
-- ✅ Role-based login system (Admin, HR, Manager, Employee)
+- ✅ Role-based login system (Manager, Employee)
 - ✅ Employee CRUD operations
-- ✅ Attendance (Muster) tracking
+- ✅ Attendance tracking
 - ✅ Leave and loan requests
 - ✅ Expense claims
 - ✅ Task assignment
@@ -34,8 +34,8 @@ A full-featured HRMS (Human Resource Management System) built using Django and D
 
 1. **Create Project Directory**
    ```bash
-   mkdir HR4U
-   cd HR4U
+   mkdir hrms
+   cd hrms
 
 2. **Set Up a Virtual Environment**
    ```bash
@@ -87,7 +87,7 @@ A full-featured HRMS (Human Resource Management System) built using Django and D
 
 8. **Folder Structure**
    ```bash
-   HR4U/
+   hrms/
    ├── project/                      # Main Django project (settings and configuration)
    │   ├── __init__.py
    │   ├── settings.py               # Global settings
@@ -134,7 +134,6 @@ This Django project includes the following templates located in the templates
 **Core Pages:**
 - 404.html – Custom 404 error page
 - base.html – Base layout used by other templates
-- index.html – Home or landing page
 - login.html – User login page
 - dashboard.html – User dashboard view
 
@@ -145,20 +144,15 @@ This Django project includes the following templates located in the templates
 - leave_create.html, leave_edit.html, leave_list.html, leave_detail.html, leave_balance.html
 - holiday_create.html, holiday_edit.html, holidays_list.html, holiday_view.html, holidays.html
 
-**Performance & Salary:**
-- performance_entry.html, performance_list.html, performance_page.html
+**Salary:**
 - salary_details.html, salary_list.html, create_salary.html, edit_salary.html
 - review_muster.html, muster_status.html, muster.html, working_days.html
-
-**Forms & Policies:**
-- company_form.html, company_create.html, company_edit.html, company_list.html, company_delete.html
-- acceptable_use_policy.html, refund_cancellation_policy.html, cookie_policy.html, terms_of_service.html, policy.html, data_retention_policy.html
 
 **User & Auth:**
 - reset_password.html, reset_password_with_otp.html, forgot_password.html, verify_otp.html, user_form.html, user_list.html, user_confirm_delete.html
 
 **User & Auth:**
-- faq.html, contact_us.html, chat_bot.html, profile.html, loan_requests.html, tax_deduction.html, task_list.html, task_management.html, staff_notifications.html, training.html, all_payslips.html, view_salary.html, expense_claims.html  
+- faq.html, contact_us.html, profile.html, loan_requests.html, tax_deduction.html, task_list.html,  staff_notifications.html, all_payslips.html, view_salary.html, expense_claims.html  
 
 ## Implementation 
 
