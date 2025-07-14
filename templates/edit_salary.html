@@ -79,12 +79,12 @@
 
 {% block content %}
 
-<h2>Edit Salary</h2>
+<h2 style="color:black;">Edit Salary</h2>
 
-<form method="POST">
+<form method="POST" style="color: black;">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save changes</button>
+    <button type="submit" style="color: linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235));">Save changes</button>
 </form>
 
 {% endblock %}
