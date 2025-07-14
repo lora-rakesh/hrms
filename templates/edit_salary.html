@@ -78,8 +78,10 @@
 {% endblock %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/edit_salary.css' %}">
 
-<h2>Edit Salary</h2>
+<h2 style="color: black;">Edit Salary</h2>
 
 <form method="POST">
     {% csrf_token %}
